@@ -6,9 +6,9 @@
 <meta name="color-scheme" content="light">
 <meta name="robots" content="noindex, nofollow">
 <meta name="googlebot" content="noindex, nofollow">
-<title>Vertex Compass — MVP v0.1</title>
+<title>Vertex Compass — MVP v0.1.1 (review build)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E40AF'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='white' stroke-opacity='.6'/%3E%3Cpath d='M20 12l-3 6-6 2 3-6z' fill='white'/%3E%3C/svg%3E">
-<meta name="description" content="Vertex Compass MVP v0.1 — US college finder, essay fit and 4-year roadmap prototype (internal review).">
+<meta name="description" content="Vertex Compass v0.1.1 review build — US college finder with academic-band comparison, post-graduation earnings and a 4-year roadmap (internal review, links disabled).">
 <style>
   :root{
     --primary:#1E40AF; --primary-dark:#1B3699; --primary-light:#3B82F6;
@@ -48,40 +48,48 @@
   /* ---------- header ---------- */
   .app-head{
     flex:0 0 auto;display:flex;align-items:center;gap:10px;
-    padding:13px 16px 12px;border-bottom:1px solid var(--line2);
+    padding:12px 14px 11px;border-bottom:1px solid var(--line2);
     background:linear-gradient(180deg,#FFFFFF 0%,#FCFDFF 100%);z-index:5;
   }
-  .mark{width:34px;height:34px;border-radius:10px;flex:0 0 auto;
+  .mark{width:32px;height:32px;border-radius:9px;flex:0 0 auto;
     background:linear-gradient(140deg,var(--primary) 0%,var(--indigo) 58%,var(--teal) 100%);
     display:grid;place-items:center;box-shadow:0 3px 8px rgba(30,64,175,.28)}
-  .mark svg{width:21px;height:21px;display:block}
-  .brand-txt{display:flex;flex-direction:column;line-height:1.18;min-width:0}
-  .brand-txt strong{font-size:16px;letter-spacing:-.2px}
-  .brand-txt span{font-size:10.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:650}
-  .lang{margin-left:auto;display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:2px;gap:2px}
+  .mark svg{width:20px;height:20px;display:block}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.16;min-width:0}
+  .brand-txt strong{font-size:15.5px;letter-spacing:-.2px;display:flex;align-items:center;gap:5px}
+  .brand-txt span{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:650}
+  .ver{font-size:8.5px;font-weight:800;letter-spacing:.02em;color:#92400E;background:#FEF3C7;border:1px solid #FDE68A;border-radius:5px;padding:1px 4px;text-transform:none}
+  .lang{margin-left:auto;display:flex;background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:2px;gap:2px}
   .lang button{
-    border:0;background:transparent;color:var(--muted);font:inherit;font-size:11.5px;font-weight:750;
-    padding:5px 8px;border-radius:8px;cursor:pointer;letter-spacing:.02em;
+    border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;font-weight:750;
+    padding:4px 7px;border-radius:7px;cursor:pointer;letter-spacing:.02em;
   }
   .lang button.on{background:#fff;color:var(--primary);box-shadow:var(--shadow-sm)}
   .lang button:focus-visible{outline:2px solid var(--primary-light);outline-offset:1px}
 
   /* ---------- main ---------- */
-  .scroll{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;padding:16px 15px 26px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  .scroll{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;padding:15px 14px 24px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
   .tab{display:none}
   .tab.on{display:block}
   .eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:2px 0 7px}
-  h1{font-size:21px;line-height:1.3;letter-spacing:-.4px;margin:0 0 6px}
-  h2{font-size:15px;letter-spacing:-.2px;margin:0 0 4px}
-  .sub{font-size:12.5px;line-height:1.55;color:var(--muted);margin:0 0 14px}
+  h1{font-size:20.5px;line-height:1.3;letter-spacing:-.4px;margin:0 0 6px}
+  h2{font-size:14.5px;letter-spacing:-.2px;margin:0 0 4px}
+  .sub{font-size:12.5px;line-height:1.55;color:var(--muted);margin:0 0 12px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
-  .pad{padding:14px}
+  .pad{padding:13px}
+
+  /* ---------- review banner ---------- */
+  .review-bar{
+    display:block;padding:8px 10px;margin:0 0 12px;border-radius:10px;
+    background:#FFFBEB;border:1px solid #FDE68A;font-size:10.5px;line-height:1.45;color:#92400E;font-weight:650;
+  }
+  .review-bar b{font-weight:850;margin-right:4px}
 
   /* ---------- inputs ---------- */
-  .filter-card{padding:14px;margin-bottom:14px;background:linear-gradient(180deg,#FFFFFF,#FBFDFF)}
-  .field{margin-bottom:13px}
+  .filter-card{padding:13px;margin-bottom:12px;background:linear-gradient(180deg,#FFFFFF,#FBFDFF)}
+  .field{margin-bottom:12px}
   .field:last-child{margin-bottom:0}
-  .field-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px}
+  .field-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px;gap:8px}
   .field-head label{font-size:11.5px;font-weight:750;color:var(--ink2);letter-spacing:.01em}
   .field-head .val{font-size:14px;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums}
   .field-head .val small{font-size:10.5px;color:var(--muted);font-weight:650;margin-left:3px}
@@ -105,68 +113,78 @@
     background-repeat:no-repeat;background-position:right 10px center;
   }
   select:focus-visible{outline:2px solid var(--primary-light);outline-offset:1px}
+  .field-note{font-size:9.5px;line-height:1.4;color:var(--muted2);margin:6px 0 0}
 
-  .chips{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
+  .chips{display:flex;gap:5px;margin:0 0 10px;flex-wrap:wrap}
   .chip{
-    font:inherit;font-size:11.5px;font-weight:700;color:var(--muted);background:#fff;
-    border:1px solid var(--line);border-radius:99px;padding:6px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:5px
+    font:inherit;font-size:11px;font-weight:700;color:var(--muted);background:#fff;
+    border:1px solid var(--line);border-radius:99px;padding:5px 9px;cursor:pointer;display:inline-flex;align-items:center;gap:5px
   }
   .chip .n{font-size:10px;font-weight:800;color:var(--muted2);background:var(--soft);border-radius:99px;padding:0 5px;line-height:15px}
   .chip.on{background:#EEF2FF;border-color:#C7D2FE;color:var(--primary)}
   .chip.on .n{background:#fff;color:var(--primary)}
   .chip:focus-visible{outline:2px solid var(--primary-light);outline-offset:1px}
-  .list-head{display:flex;align-items:center;justify-content:space-between;margin:0 1px 8px}
+  .list-head{display:flex;align-items:center;justify-content:space-between;margin:0 1px 8px;gap:8px}
   .list-head span{font-size:11px;font-weight:700;color:var(--muted)}
-  .list-head a{font-size:11px;font-weight:750;color:var(--primary);text-decoration:none}
+  .list-head small{font-size:9.5px;color:var(--muted2);text-align:right}
 
   /* ---------- school cards ---------- */
   .school{
     width:100%;text-align:left;font:inherit;color:inherit;background:#fff;
-    border:1px solid var(--line);border-radius:14px;padding:12px 13px 11px;margin-bottom:9px;
+    border:1px solid var(--line);border-radius:14px;padding:11px 12px 10px;margin-bottom:8px;
     box-shadow:var(--shadow-sm);cursor:pointer;display:block;transition:border-color .15s, box-shadow .15s, transform .15s;
   }
   .school:hover{border-color:#C7D2FE;box-shadow:var(--shadow-md);transform:translateY(-1px)}
   .school:focus-visible{outline:2px solid var(--primary-light);outline-offset:1px}
   .s-top{display:flex;align-items:flex-start;gap:8px}
-  .s-name{font-size:14.5px;font-weight:800;letter-spacing:-.2px;line-height:1.25;flex:1;min-width:0}
+  .s-name{font-size:14px;font-weight:800;letter-spacing:-.2px;line-height:1.25;flex:1;min-width:0}
   .s-loc{display:block;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:3px;line-height:1.35}
-  .badge{font-size:9.5px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:6px;white-space:nowrap;margin-top:1px}
-  .badge.reach{background:#FEE2E2;color:#B91C1C}
-  .badge.target{background:#FEF3C7;color:#B45309}
-  .badge.safety{background:#DCFCE7;color:#15803D}
-  .s-stats{display:flex;gap:12px;margin:9px 0 2px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+  .bandpill{font-size:9px;font-weight:850;letter-spacing:.03em;padding:3px 6px;border-radius:6px;white-space:nowrap;margin-top:1px;border:1px solid transparent}
+  .bandpill.above{background:#DCFCE7;color:#15803D;border-color:#BBF7D0}
+  .bandpill.within{background:#DBEAFE;color:#1D4ED8;border-color:#BFDBFE}
+  .bandpill.below{background:#FEF3C7;color:#B45309;border-color:#FDE68A}
+  .bandpill.testfree{background:#F1F5F9;color:#475569;border-color:#E2E8F0}
+  .bandpill.sections{background:#EDE9FE;color:#6D28D9;border-color:#DDD6FE}
+  .s-stats{display:flex;gap:11px;margin:8px 0 2px;font-size:10.5px;color:var(--muted);flex-wrap:wrap;align-items:center}
   .s-stats b{color:var(--ink2);font-weight:800;font-variant-numeric:tabular-nums}
-  .sat{display:block;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2)}
-  .sat-top{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:var(--muted)}
+  .pill{font-size:8.5px;font-weight:850;letter-spacing:.02em;border-radius:5px;padding:1px 5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .pill.closed{background:#F1F5F9;color:#64748B}
+  .pill.soon{background:#FEE2E2;color:#B91C1C}
+  .pill.open{background:#ECFDF5;color:#047857}
+  .sat{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2)}
+  .sat-top{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:var(--muted);gap:8px}
   .sat-top b{color:var(--ink2);font-variant-numeric:tabular-nums}
   .bar{display:block;position:relative;height:7px;border-radius:99px;background:#EEF2F7;margin:6px 0 5px}
   .bar .band{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,#BFDBFE,#C7D2FE);border-radius:99px}
   .bar .dot{position:absolute;top:50%;width:11px;height:11px;border-radius:50%;background:#fff;border:2.5px solid var(--primary);transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(30,64,175,.35)}
-  .sat-foot{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);gap:8px}
-  .sat-foot span{display:inline}
+  .sat-foot{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);gap:8px;flex-wrap:wrap}
   .sat-foot b{color:var(--ink);font-variant-numeric:tabular-nums}
   .sat-foot .ok{color:#15803D;font-weight:750}
   .sat-foot .off{color:#B45309;font-weight:750}
-  .tf{display:block;margin-top:9px;padding:7px 9px;background:var(--soft);border-radius:8px;font-size:10.5px;color:var(--muted);font-weight:650}
-  .s-fit{display:flex;align-items:baseline;gap:6px;margin-top:9px;padding-top:8px;border-top:1px solid var(--line2)}
-  .s-fit span{font-size:10.5px;font-weight:700;color:var(--muted)}
-  .s-fit b{font-size:14px;font-weight:850;color:var(--primary);font-variant-numeric:tabular-nums}
-  .s-fit i{font-size:9.5px;color:var(--muted2);font-style:normal;margin-left:auto;text-align:right;line-height:1.3}
-  .empty{padding:26px 16px;text-align:center;font-size:12.5px;color:var(--muted);border:1px dashed var(--line);border-radius:14px;background:var(--soft)}
+  .sat-split{display:block;margin-top:8px;padding:7px 9px;background:var(--soft);border-radius:8px;font-size:10px;color:var(--muted);font-weight:650;line-height:1.5}
+  .sat-split b{color:var(--ink2);font-variant-numeric:tabular-nums}
+  .tf{display:block;margin-top:8px;padding:7px 9px;background:var(--soft);border-radius:8px;font-size:10.5px;color:var(--muted);font-weight:650}
+  .s-earn{display:flex;align-items:baseline;gap:6px;margin-top:8px;padding-top:7px;border-top:1px solid var(--line2)}
+  .s-earn span{font-size:10px;font-weight:700;color:var(--muted)}
+  .s-earn b{font-size:12.5px;font-weight:850;color:#0F766E;font-variant-numeric:tabular-nums;margin-left:auto}
+  .s-earn i{font-size:8.5px;color:var(--muted2);font-style:normal}
+  .empty{padding:24px 16px;text-align:center;font-size:12.5px;color:var(--muted);border:1px dashed var(--line);border-radius:14px;background:var(--soft)}
 
   /* ---------- tab2 ---------- */
-  .back{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:750;color:var(--primary);background:none;border:0;padding:2px 0;margin-bottom:10px;cursor:pointer;font-family:inherit}
-  .detail-head{padding:14px;margin-bottom:11px;background:linear-gradient(160deg,#F8FAFF 0%,#FFFFFF 60%);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .back{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:750;color:var(--primary);background:none;border:0;padding:2px 0;margin-bottom:9px;cursor:pointer;font-family:inherit}
+  .detail-head{padding:13px;margin-bottom:10px;background:linear-gradient(160deg,#F8FAFF 0%,#FFFFFF 60%);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
   .dh-top{display:flex;gap:10px;align-items:flex-start}
   .crest{width:42px;height:42px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;font-size:15px;font-weight:850;color:#fff;letter-spacing:-.5px;background:linear-gradient(140deg,var(--primary),var(--indigo) 60%,var(--teal));box-shadow:0 3px 8px rgba(30,64,175,.22)}
   .dh-name{font-size:16px;font-weight:850;letter-spacing:-.3px;line-height:1.25}
   .dh-meta{font-size:10.5px;color:var(--muted);margin-top:3px;font-weight:600}
-  .stats3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:12px}
-  .stat{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:7px 8px}
-  .stat dt{font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2);margin:0 0 3px}
-  .stat dd{margin:0;font-size:12.5px;font-weight:850;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
-  .stat dd em{font-style:normal;font-size:9.5px;font-weight:650;color:var(--muted)}
-  .sect{font-size:10.5px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 2px 7px}
+  .stats3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:11px}
+  .stat{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:7px 8px;min-width:0}
+  .stat dt{font-size:8.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted2);margin:0 0 3px}
+  .stat dd{margin:0;font-size:12px;font-weight:850;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+  .stat dd em{font-style:normal;font-size:9px;font-weight:650;color:var(--muted);display:block;margin-top:2px}
+  .sect{font-size:10.5px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:15px 2px 6px;display:flex;align-items:center;gap:6px}
+  .sect .tag-mini{font-size:8.5px;letter-spacing:0;text-transform:none;font-weight:750;color:#0F766E;background:#CCFBF1;border-radius:5px;padding:1px 5px}
+  .sect .tag-mini.warn{color:#92400E;background:#FEF3C7}
   .mission{font-size:13px;line-height:1.65;color:var(--ink2);margin:0}
   .tags{display:flex;flex-wrap:wrap;gap:6px}
   .tag{font-size:11px;font-weight:750;color:#0F766E;background:#CCFBF1;border-radius:7px;padding:5px 9px}
@@ -175,31 +193,53 @@
   .tips li:last-child{margin-bottom:0}
   .tips li:before{content:"";position:absolute;left:2px;top:7px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
   .dl{width:100%;border-collapse:collapse;font-size:12px}
-  .dl th,.dl td{text-align:left;padding:8px 0;border-bottom:1px solid var(--line2);vertical-align:top}
+  .dl th,.dl td{text-align:left;padding:7px 0;border-bottom:1px solid var(--line2);vertical-align:top}
   .dl tr:last-child th,.dl tr:last-child td{border-bottom:0}
-  .dl th{font-weight:700;color:var(--muted);width:40%}
+  .dl th{font-weight:700;color:var(--muted);width:38%}
   .dl td{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
   .dl td small{display:block;font-weight:600;color:var(--muted2);font-size:10px;margin-top:2px}
-  .note{font-size:10.5px;line-height:1.5;color:var(--muted);margin:8px 2px 0}
+  .dl td .pill{margin-left:5px}
+  .note{font-size:10.5px;line-height:1.5;color:var(--muted);margin:7px 2px 0}
+  .note b{color:var(--ink2)}
   .hook{display:flex;gap:8px;padding:10px 11px;background:#F8FAFF;border:1px dashed #C7D2FE;border-radius:10px;font-size:11.5px;line-height:1.5;color:var(--ink2)}
   .hook b{color:var(--primary)}
+  .cmp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .cmp-line{font-size:11.5px;color:var(--ink2);line-height:1.5}
+  .cmp-line b{font-variant-numeric:tabular-nums}
+  .srcs{width:100%;border-collapse:collapse;font-size:10px}
+  .srcs th,.srcs td{text-align:left;padding:5px 0;border-bottom:1px dotted var(--line2);vertical-align:top;line-height:1.45}
+  .srcs tr:last-child th,.srcs tr:last-child td{border-bottom:0}
+  .srcs th{font-weight:750;color:var(--muted);width:31%;padding-right:7px}
+  .srcs td{color:var(--ink2);font-weight:650}
+
+  /* ---------- earnings ---------- */
+  .earn-card{padding:12px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(170deg,#F0FDFA 0%,#FFFFFF 55%);box-shadow:var(--shadow-sm)}
+  .earn-big{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .earn-big strong{font-size:26px;font-weight:850;letter-spacing:-1px;color:#0F766E;font-variant-numeric:tabular-nums;line-height:1.1}
+  .earn-big small{font-size:10px;color:var(--muted);line-height:1.45;font-weight:650}
+  .earn-sub{font-size:10.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
+  .career{border-top:1px solid var(--line2);margin-top:9px;padding-top:8px}
+  .career-row{display:flex;align-items:baseline;gap:8px;font-size:11.5px;line-height:1.45;padding:3px 0}
+  .career-row .cmaj{color:var(--muted);font-weight:700;flex:0 0 auto;max-width:45%}
+  .career-row .cjob{color:var(--ink2);font-weight:750;flex:1;min-width:0}
+  .career-row .cpay{color:var(--ink);font-weight:850;font-variant-numeric:tabular-nums}
 
   /* ---------- tab3 ---------- */
-  .gauge-card{padding:14px 14px 14px;margin-bottom:12px;text-align:center;background:
+  .gauge-card{padding:13px 13px 13px;margin-bottom:11px;text-align:center;background:
     radial-gradient(320px 160px at 50% 0%, #EEF2FF 0%, rgba(238,242,255,0) 70%), #fff;
     border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
-  .vci-title{font-size:9.5px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
-  .gauge-wrap{position:relative;width:206px;height:206px;margin:2px auto 0}
-  .gauge-wrap svg{width:206px;height:206px;display:block}
+  .vci-title{font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
+  .gauge-wrap{position:relative;width:200px;height:200px;margin:2px auto 0}
+  .gauge-wrap svg{width:200px;height:200px;display:block}
   .gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
-  .vci-num{font-size:46px;font-weight:850;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;
+  .vci-num{font-size:44px;font-weight:850;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;
     background:linear-gradient(135deg,var(--primary) 0%,var(--indigo) 55%,var(--teal) 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent}
-  .vci-cap{font-size:8.5px;font-weight:850;letter-spacing:.16em;color:var(--muted2);margin-top:5px;text-transform:uppercase}
-  .tier{display:inline-flex;align-items:center;gap:6px;margin-top:11px;padding:5px 11px;border-radius:99px;background:#ECFDF5;color:#047857;font-size:11.5px;font-weight:850}
+  .vci-cap{font-size:8px;font-weight:850;letter-spacing:.14em;color:var(--muted2);margin-top:5px;text-transform:uppercase}
+  .tier{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 10px;border-radius:99px;background:#ECFDF5;color:#047857;font-size:11px;font-weight:850}
   .tier .dot2{width:6px;height:6px;border-radius:50%;background:#10B981;display:inline-block}
-  .tier-note{font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.45}
-  .pillar{margin-bottom:11px}
+  .tier-note{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.45;text-align:left}
+  .pillar{margin-bottom:10px}
   .pillar:last-child{margin-bottom:0}
   .p-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:6px}
   .p-name{font-size:11.5px;font-weight:750;color:var(--ink2)}
@@ -207,37 +247,46 @@
   .p-val{font-size:11.5px;font-weight:850;color:var(--primary);font-variant-numeric:tabular-nums}
   .pillar input[type=range]::-webkit-slider-runnable-track{background:#EEF2F7}
   .pillar input[type=range]::-webkit-slider-thumb{width:17px;height:17px;margin-top:-5.5px;border-width:2px}
-  .advice{display:flex;gap:9px;padding:11px 12px;border-radius:12px;background:#FFFBEB;border:1px solid #FDE68A;margin-top:12px}
-  .advice .ico{width:20px;height:20px;flex:0 0 auto;border-radius:50%;background:#F59E0B;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:900}
+  .advice{display:flex;gap:9px;padding:10px 11px;border-radius:12px;background:#FFFBEB;border:1px solid #FDE68A;margin-top:11px}
+  .advice .ico{width:19px;height:19px;flex:0 0 auto;border-radius:50%;background:#F59E0B;color:#fff;display:grid;place-items:center;font-size:10.5px;font-weight:900}
   .advice p{margin:0;font-size:11.5px;line-height:1.45;color:#92400E}
   .advice p b{font-weight:850}
-  details.road{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px;overflow:hidden}
+  details.road{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:7px;overflow:hidden}
   details.road[open]{border-color:#C7D2FE;box-shadow:var(--shadow-sm)}
-  details.road summary{list-style:none;cursor:pointer;padding:11px 12px;display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;color:var(--ink)}
+  details.road summary{list-style:none;cursor:pointer;padding:10px 12px;display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;color:var(--ink)}
   details.road summary::-webkit-details-marker{display:none}
   .gy{width:26px;height:26px;border-radius:8px;background:#EEF2FF;color:var(--primary);display:grid;place-items:center;font-size:10.5px;font-weight:850;flex:0 0 auto}
   details.road summary .caret{margin-left:auto;color:var(--muted2);transition:transform .2s;font-size:11px}
   details.road[open] summary .caret{transform:rotate(90deg)}
-  .r-body{padding:0 13px 12px 47px}
+  .r-body{padding:0 13px 11px 47px}
   .r-body ul{margin:0;padding:0;list-style:none}
   .r-body li{font-size:11.5px;line-height:1.5;color:var(--muted);margin-bottom:5px;position:relative}
   .r-body li:before{content:"";position:absolute;left:-11px;top:6px;width:4px;height:4px;border-radius:50%;background:#C7D2FE}
-  .prog{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:inherit;margin-bottom:8px}
-  .prog:hover{border-color:#C7D2FE;background:#FBFCFF}
-  .prog .pico{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:#EEF2FF}
+  .prog{display:flex;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:inherit;margin-bottom:7px}
+  .prog .pico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:#EEF2FF}
   .prog .pico.b{background:#CCFBF1}
   .prog b{display:block;font-size:12.5px;font-weight:800;letter-spacing:-.1px}
   .prog small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.35}
-  .prog .arrow{margin-left:auto;color:var(--muted2);font-size:13px}
-  .cta{display:block;text-align:center;text-decoration:none;margin-top:12px;padding:14px 12px;border-radius:13px;color:#fff;
+  .prog .arrow{margin-left:auto;color:var(--muted2);font-size:12px}
+  .prog.disabled{background:#FAFBFC;border-style:dashed;opacity:.9;cursor:not-allowed}
+  .prog.disabled b{color:var(--muted)}
+  .cta{display:block;text-align:center;text-decoration:none;margin-top:11px;padding:13px 12px;border-radius:13px;color:#fff;
     background:linear-gradient(120deg,var(--primary) 0%,#4338CA 55%,#0F766E 100%);
     box-shadow:0 8px 20px rgba(30,64,175,.26);font-weight:850;font-size:13.5px;letter-spacing:-.1px}
-  .cta:hover{filter:brightness(1.04)}
   .cta small{display:block;font-size:10px;font-weight:650;opacity:.85;margin-top:4px;letter-spacing:0}
-  .disc{font-size:9.5px;line-height:1.55;color:var(--muted2);margin:12px 2px 0}
+  .cta.disabled{background:#E2E8F0;color:#475569;box-shadow:none;cursor:not-allowed;border:1px dashed #CBD5E1}
+  .cta.disabled small{opacity:1;color:#64748B}
+  .cta.disabled .en-label{display:block;font-size:9.5px;font-weight:800;letter-spacing:.01em;color:#B45309;margin-top:6px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:4px 6px}
+  .disc{font-size:9.5px;line-height:1.55;color:var(--muted2);margin:11px 2px 0}
   .disc b{color:var(--muted);font-weight:800}
-  footer{padding:14px 4px 2px;border-top:1px solid var(--line2);margin-top:18px;display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--muted2);line-height:1.5}
+  footer{padding:13px 4px 2px;border-top:1px solid var(--line2);margin-top:16px;display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--muted2);line-height:1.5}
   footer b{color:var(--muted)}
+  .storage{margin-top:12px;padding:11px;border:1px dashed var(--line);border-radius:12px;background:var(--soft)}
+  .storage p{margin:0 0 8px;font-size:10.5px;line-height:1.5;color:var(--muted)}
+  .reset{font:inherit;font-size:11px;font-weight:800;color:#B91C1C;background:#fff;border:1px solid #FECACA;border-radius:9px;padding:7px 11px;cursor:pointer}
+  .reset:hover{background:#FEF2F2}
+  .reset:focus-visible{outline:2px solid var(--primary-light);outline-offset:1px}
+  .flash{font-size:10.5px;font-weight:750;color:#047857;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:9px;padding:6px 9px;margin:8px 0 0}
 
   /* ---------- tab bar ---------- */
   .tabbar{
@@ -266,7 +315,7 @@
         </svg>
       </div>
       <div class="brand-txt">
-        <strong>Vertex Compass</strong>
+        <strong>Vertex Compass <span class="ver">v0.1.1 REVIEW</span></strong>
         <span id="brandTag">Vertex Education</span>
       </div>
       <div class="lang" role="group" aria-label="Language / 언어 / Ngôn ngữ">
@@ -303,229 +352,116 @@
 (function(){
   "use strict";
 
-  /* =========================================================
-     DATA — 15 US universities & liberal arts colleges
-     Sources (accessed 2026-11-23):
-     · Common Data Set 2025-26 for admit rates; latest CDS (2024-25 or 2025-26) for SAT 25–75
-     · Official admissions pages (fall 2027 entry) for RD deadlines
-     · UC campuses are test-free: SAT/ACT not considered (marked sat:null)
-     ========================================================= */
+  var UI = {"ko": {"tagline": "미국 입시 파트너", "reviewChip": "검토 빌드", "reviewBar": "최종 승인 전 검토용입니다. Waitlist 신청과 프로그램 링크는 이 빌드에서 비활성화되어 있습니다.", "tab1": "대학 찾기", "tab2": "인재상·에세이", "tab3": "My Compass", "t1Eye": "SCHOOL FINDER", "t1Title": "내 조건으로 대학 찾기", "t1Sub": "SAT·GPA·전공을 움직이면 15개 미국 대학의 학업 구간 비교와 졸업 후 소득 참고값이 함께 바뀝니다.", "sat": "SAT 점수", "gpa": "내신 GPA", "gpaUnit": "/ 4.0", "major": "관심 전공", "all": "전체", "above": "75백분위 위", "within": "25–75 안", "below": "25백분위 아래", "testfree": "Test-free(UC)", "sections": "섹션 점수만", "count": "{n}개 학교 표시", "countAll": "15개 학교 전체", "pubRate": "공식 합격률", "satBand": "SAT 25–75", "testFree": "SAT/ACT 미반영 · UC Test-free", "yourPos": "내 SAT", "inBand": "구간 안", "belowBand": "구간 아래", "aboveBand": "구간 위", "band": "학업 구간 비교", "cmpLine": "내 SAT <b>{sat}</b> · 공개 구간 <b>{lo}–{hi}</b>", "cmpSections": "공개 구간은 EBRW <b>{ebrw}</b> · Math <b>{math}</b> (합성 점수 미공개)", "cmpTestFree": "이 대학은 SAT/ACT를 반영하지 않습니다(UC Test-free). GPA·과목 이수·에세이로 검토합니다.", "bandNote": "학업 구간 비교입니다. 내가 입력한 점수와 학교가 공개한 합격생 점수 구간을 나란히 보여줄 뿐, 개인의 합격 확률이나 안전/적정 판정이 아닙니다.", "bandSectionsNote": "Harvard는 Common Data Set에 합성 점수가 비어 있어 EBRW와 Math를 따로 표시하며, 두 값을 합산하지 않습니다.", "satSplitShort": "EBRW·Math 별도", "satSplitEbrw": "SAT EBRW 25–75", "satSplitMath": "SAT Math 25–75", "satSplitNote": "합성 점수는 공개되지 않음(합산 표시하지 않음)", "cdsNote": "CDS 2025-26 · 2026-11-23 확인", "empty": "조건에 맞는 학교가 없습니다. 전공을 '전공 전체'로 바꿔 보세요.", "majorsNote": "전공 필터는 Vertex 큐레이션 목록입니다 · 대학의 전체 전공 목록이 아님", "privateType": "사립", "publicType": "공립", "lacType": "리버럴 아츠", "natType": "종합대학", "earnBadge": "졸업 10년 후 중간소득", "sources": "출처", "checked": "2026-11-23 확인", "interp": "Vertex 해석", "srcAdmit": "CDS 2025-26 · C1", "srcCds2526": "CDS 2025-26 · C9", "srcCds2425": "CDS 2024-25 · C9", "srcSecondary": "CDS 2025-26 · C9 · 2차 출처(원문 대조 대기)", "cohortFall": "Fall {y} 코호트", "deadlineSrc": "각 대학 공식 입학 페이지 · Fall 2027", "earnSrc": "College Scorecard · 2026-11-23 조회", "earnSrcLabel": "소득(10년 후)", "cycle": "Fall 2027", "ucRound": "UC 지원", "closed": "마감", "ucWindow": "접수 기간 Oct 1–Nov 30, 2026", "chkShort": "2026-11-23 확인", "deadlines": "지원 일정", "dlNote": "마감일은 Fall 2027 입학 기준이며 2026-11-23에 확인했습니다. 이미 지난 전형은 '마감'으로 표시합니다.", "mission": "미션·가치", "missionNote": "공식 미션·가치를 Vertex가 요약한 해석입니다. 학교의 최신 공식 문구나 에세이 문항이 아닙니다.", "keywords": "에세이 키워드", "keywordsNote": "Vertex 해석입니다. 학교가 공개한 최신 에세이 문항이 아닙니다.", "tips": "에세이 방향", "gpaBench": "참고 GPA", "gpaBenchNote": "Vertex 참고 기준 · 공식 아님", "hook": "Vertex 메모", "back": "← 대학 찾기로", "changeSchool": "다른 학교 보기", "pick": "대학을 선택하세요", "pickHint": "1번 탭에서 학교 카드를 누르면 인재상과 에세이 방향이 열립니다.", "t2School": "학교 선택", "t2Eye": "FIT & ESSAYS", "t2Title": "학교가 보는 인재상", "earnTitle": "졸업 후 예상 연봉 & 미래 직업", "earnShort": "졸업 10년 후 중간소득", "earnInst": "기관 중간소득 · 졸업 10년 후", "earnInstNote": "College Scorecard · 연방 학자금 수혜 학생 기준 기관 전체 중간값", "earnLine": "전체 금액 {full} · USD", "earnPull": "2026-11-23 조회", "careerTitle": "전공별 직업 참고", "blsPay": "BLS 2025 중간임금", "careerNote": "BLS Occupational Outlook Handbook의 2025년 전국 직업 중간임금입니다. 학교·전공별 시작 연봉이 아닙니다.", "earnDisc": "기관 전체 중간값(Scorecard)과 전국 직업 중간임금(BLS)은 서로 다른 값입니다. 전공·지역·경력·근무시간에 따라 크게 달라지므로 참고용으로만 보세요.", "t3Eye": "MY COMPASS", "t3Title": "종합 지수와 4년 로드맵", "t3Sub": "7개 지표를 직접 평가하면 VCI 자기평가 점수와 다음 우선순위가 실시간으로 바뀝니다.", "vci": "VCI · 7개 지표 자기평가", "outOf": "OUT OF 100", "tierPrefix": "자기평가 구간", "tierNote": "VCI는 7개 지표를 직접 평가해 가중 합산한 자기평가 점수입니다. 외부에서 검증된 입학 등급이나 대학 지표가 아닙니다.", "tierBands": ["1 (85–100)", "2 (72–84)", "3 (58–71)", "4 (0–57)"], "pillars": "7대 핵심 지표", "weight": "가중치", "adviceTitle": "다음 우선순위", "advice": "가장 낮은 지표는 <b>{name}</b>입니다. 이번 학기에 여기에 시간을 먼저 배분해 보세요.", "adviceHigh": "7개 지표가 고르게 올라왔습니다. 이제 에세이와 지원 전략으로 마무리 단계입니다.", "roadmap": "G9–G12 4년 로드맵", "programs": "Vertex Education 프로그램", "svhs": "SVHS 미국 학점 과정", "svhsSub": "미국 고교 학점·GPA 보완", "sdg": "SDG Youth 임팩트 인증", "sdgSub": "지역사회 프로젝트 · 인증서", "progDisabled": "검토 빌드 · 최종 승인 후 링크가 열립니다", "ctaDisabled": "Waitlist 신청 비활성화 (검토 빌드)", "ctaSub": "선착순 아님 · 학비는 상담 후 안내", "storageNote": "입력값은 이 기기의 브라우저(localStorage)에만 자동 저장됩니다. 서버로 전송되지 않습니다.", "reset": "로컬 데이터 초기화", "resetDone": "저장된 입력값을 지우고 기본값으로 돌렸습니다.", "disc": "내부 검토용 v0.1.1 빌드입니다. 학업 구간·VCI·소득 값은 모두 참고용이며, 실제 지원 결정은 공식 자료와 상담으로 확인하세요.", "footer": "내부 검토용 · 대외 배포 금지", "majors": {"all": "전공 전체", "business": "경영·비즈니스", "cs": "컴퓨터과학", "engineering": "공학", "bio": "생명·Pre-Med", "econ": "경제학", "polisci": "정치학", "psych": "심리학", "arts": "예술·디자인", "math": "수학·물리", "enviro": "환경·지속가능성", "edu": "교육학", "hospitality": "호텔·관광경영", "humanities": "문학·인문학(AI 윤리)", "ai": "AI·데이터사이언스", "biohealth": "바이오·신경과학", "climate": "기후테크·에너지", "robotics": "로보틱스·항공우주", "fintech": "핀테크·퀀트", "media": "디지털 미디어·콘텐츠", "policy": "공공정책·국제학"}, "pillarsLabel": {"academics": ["학업", "SAT·GPA"], "leadership": ["리더십", "활동·역할"], "majorDepth": ["전공 심화", "수업·프로젝트"], "research": ["연구·프로젝트", "탐구의 깊이"], "impact": ["SDG·지역사회", "임팩트"], "essay": ["에세이 스토리", "서사"], "strategy": ["지원 전략", "일정·전형"]}, "road": [{"t": "G9 · 기초 만들기", "b": ["GPA 습관과 과목 난이도 균형 잡기", "활동 3~4개를 넓게 탐색", "SAT 진단 테스트로 출발점 확인"]}, {"t": "G10 · 방향 정하기", "b": ["AP/IB 또는 Honors 본격 진입", "리더십 역할 1~2개 확보", "PSAT 응시 · 관심 전공 좁히기"]}, {"t": "G11 · 실적 만들기", "b": ["GPA 정점 구간 방어", "SAT/ACT 목표 점수 마무리", "연구·캡스톤 · 추천서 관계 만들기"]}, {"t": "G12 · 지원 완성", "b": ["공통 에세이 + 학교별 에세이", "ED/EA 11월 · RD 1월 마감 관리", "재정 서류(CSS/FAFSA) 일정 체크"]}]}, "en": {"tagline": "US admissions partner", "reviewChip": "Review build", "reviewBar": "Internal review before final approval. Waitlist sign-up and programme links are disabled in this build.", "tab1": "Find Schools", "tab2": "Fit & Essays", "tab3": "My Compass", "t1Eye": "SCHOOL FINDER", "t1Title": "Find schools that fit you", "t1Sub": "Move SAT, GPA and major to compare academic bands and see reference post-graduation earnings across 15 US universities and colleges.", "sat": "SAT score", "gpa": "GPA", "gpaUnit": "/ 4.0", "major": "Intended major", "all": "All", "above": "Above 75th", "within": "Within 25–75th", "below": "Below 25th", "testfree": "Test-free (UC)", "sections": "Sections only", "count": "{n} schools", "countAll": "All 15 schools", "pubRate": "Admit rate", "satBand": "SAT 25–75", "testFree": "SAT/ACT not considered · UC test-free", "yourPos": "Your SAT", "inBand": "In band", "belowBand": "Below band", "aboveBand": "Above band", "band": "Academic-band comparison", "cmpLine": "Your SAT <b>{sat}</b> · published band <b>{lo}–{hi}</b>", "cmpSections": "Published bands: EBRW <b>{ebrw}</b> · Math <b>{math}</b> (no composite published)", "cmpTestFree": "This campus does not consider SAT/ACT (UC test-free). Review uses GPA, coursework and essays.", "bandNote": "Academic-band comparison. It shows your inputs next to the enrolled-student score ranges each college publishes. It is a counseling reference, not an individual admission probability or a safety/target determination.", "bandSectionsNote": "Harvard leaves the composite line blank in its Common Data Set, so EBRW and Math are shown separately and are not added together.", "satSplitShort": "EBRW · Math separate", "satSplitEbrw": "SAT EBRW 25–75", "satSplitMath": "SAT Math 25–75", "satSplitNote": "Composite not published (no combined figure)", "cdsNote": "CDS 2025-26 · checked 2026-11-23", "empty": "No school matches these filters. Try setting the major to “All majors”.", "majorsNote": "The major filter is a curated Vertex list · not a college’s full catalogue", "privateType": "Private", "publicType": "Public", "lacType": "Liberal arts", "natType": "National university", "earnBadge": "Median earnings, 10 yrs after entry", "sources": "Sources", "checked": "checked 2026-11-23", "interp": "Vertex interpretation", "srcAdmit": "CDS 2025-26 · C1", "srcCds2526": "CDS 2025-26 · C9", "srcCds2425": "CDS 2024-25 · C9", "srcSecondary": "CDS 2025-26 · C9 · secondary source (primary check pending)", "cohortFall": "Fall {y} cohort", "deadlineSrc": "Each college’s official admissions page · fall 2027", "earnSrc": "College Scorecard · pulled 2026-11-23", "earnSrcLabel": "Earnings (10y)", "cycle": "Fall 2027", "ucRound": "UC application", "closed": "Closed", "ucWindow": "Filing window Oct 1–Nov 30, 2026", "chkShort": "checked 2026-11-23", "deadlines": "Deadlines", "dlNote": "Deadlines are for fall 2027 entry and were checked on 2026-11-23. Rounds already past are marked “Closed”.", "mission": "Mission & values", "missionNote": "A Vertex summary of published mission and values. Not the college’s current official wording or essay prompts.", "keywords": "Essay keywords", "keywordsNote": "Vertex interpretation, not official current essay prompts.", "tips": "Essay direction", "gpaBench": "Reference GPA", "gpaBenchNote": "Vertex reference, not official", "hook": "Vertex note", "back": "← Back to schools", "changeSchool": "Change school", "pick": "Pick a school", "pickHint": "Tap a school card in tab 1 to open its values and essay direction.", "t2School": "Choose a school", "t2Eye": "FIT & ESSAYS", "t2Title": "What each school looks for", "earnTitle": "Post-grad earnings & future careers", "earnShort": "Median earnings, 10 yrs after entry", "earnInst": "Institution median earnings · 10 years after entry", "earnInstNote": "College Scorecard · median for all federal-aid students at the institution", "earnLine": "Full figure {full} · USD", "earnPull": "pulled 2026-11-23", "careerTitle": "Career reference by major", "blsPay": "BLS 2025 median pay", "careerNote": "National occupational median pay (2025) from the BLS Occupational Outlook Handbook. Not a school- or major-specific starting salary.", "earnDisc": "Institution median earnings (Scorecard) and national occupational median pay (BLS) are different measures. Both vary widely by major, location, experience and hours worked — use them as reference only.", "t3Eye": "MY COMPASS", "t3Title": "Self-rating index & 4-year plan", "t3Sub": "Rate the seven pillars yourself and the VCI self-rating and next priority update live.", "vci": "VCI · weighted self-rating (7 pillars)", "outOf": "OUT OF 100", "tierPrefix": "Self-rating band", "tierNote": "VCI is a weighted self-rating of seven pillars you score yourself. It is not an externally validated admissions tier or a college metric.", "tierBands": ["1 (85–100)", "2 (72–84)", "3 (58–71)", "4 (0–57)"], "pillars": "The seven pillars", "weight": "weight", "adviceTitle": "Next priority", "advice": "Your lowest pillar is <b>{name}</b>. Give it the first block of time this term.", "adviceHigh": "All seven pillars are moving up. Shift focus to essays and application strategy.", "roadmap": "G9–G12 roadmap", "programs": "Vertex Education programmes", "svhs": "SVHS US Credit Courses", "svhsSub": "US high-school credits & GPA", "sdg": "SDG Youth Impact Certification", "sdgSub": "Community project & certificate", "progDisabled": "Review build · link opens after final approval", "ctaDisabled": "Waitlist sign-up disabled (review build)", "ctaSub": "Not first-come · tuition shared after consultation", "storageNote": "Your inputs are saved automatically only in this device’s browser (localStorage). Nothing is sent to a server.", "reset": "Reset local data", "resetDone": "Saved inputs cleared and defaults restored.", "disc": "Internal review build v0.1.1. Academic bands, VCI and earnings are reference values; confirm real application decisions with official sources and a counselor.", "footer": "Internal review · not for public distribution", "majors": {"all": "All majors", "business": "Business", "cs": "Computer Science", "engineering": "Engineering", "bio": "Biology & Pre-Med", "econ": "Economics", "polisci": "Political Science", "psych": "Psychology", "arts": "Arts & Design", "math": "Math & Physics", "enviro": "Environmental Studies", "edu": "Education", "hospitality": "Hospitality Management", "humanities": "Literature & Humanities (AI Ethics)", "ai": "AI & Data Science", "biohealth": "Biohealth & Neuroscience", "climate": "Climate Tech & Energy", "robotics": "Robotics & Aerospace", "fintech": "FinTech & Quantitative Finance", "media": "Digital Media & Creator Business", "policy": "Public Policy & Global Affairs"}, "pillarsLabel": {"academics": ["Academics", "SAT·GPA"], "leadership": ["Leadership", "roles & impact"], "majorDepth": ["Major depth", "courses & projects"], "research": ["Research", "depth of inquiry"], "impact": ["SDG & community", "impact"], "essay": ["Essay story", "narrative"], "strategy": ["Strategy", "timeline & rounds"]}, "road": [{"t": "G9 · Build the base", "b": ["Build GPA habits and course rigor", "Explore 3–4 activities broadly", "Take a diagnostic SAT"]}, {"t": "G10 · Choose a direction", "b": ["Enter AP/IB or Honors coursework", "Take on 1–2 leadership roles", "Take the PSAT and narrow your major"]}, {"t": "G11 · Build the record", "b": ["Protect your peak GPA term", "Finish SAT/ACT target scores", "Research or capstone · build recommender relationships"]}, {"t": "G12 · Finish applications", "b": ["Common App + school essays", "Manage ED/EA November and RD January", "Track CSS Profile / FAFSA"]}]}, "vi": {"tagline": "Đối tác tuyển sinh Mỹ", "reviewChip": "Bản kiểm tra", "reviewBar": "Bản dùng để kiểm tra trước khi phê duyệt cuối. Danh sách chờ và liên kết chương trình bị vô hiệu hóa trong bản này.", "tab1": "Tìm trường", "tab2": "Phù hợp & Bài luận", "tab3": "My Compass", "t1Eye": "SCHOOL FINDER", "t1Title": "Tìm trường theo điều kiện của bạn", "t1Sub": "Điều chỉnh SAT, GPA và ngành để so sánh khoảng điểm học tập và xem thu nhập tham khảo sau tốt nghiệp của 15 trường Mỹ.", "sat": "Điểm SAT", "gpa": "GPA", "gpaUnit": "/ 4.0", "major": "Ngành quan tâm", "all": "Tất cả", "above": "Trên bách phân vị 75", "within": "Trong 25–75", "below": "Dưới bách phân vị 25", "testfree": "Không xét SAT/ACT (UC)", "sections": "Chỉ điểm từng phần", "count": "Hiển thị {n} trường", "countAll": "Toàn bộ 15 trường", "pubRate": "Tỷ lệ trúng tuyển", "satBand": "SAT 25–75", "testFree": "Không xét SAT/ACT · UC test-free", "yourPos": "SAT của bạn", "inBand": "Trong khoảng", "belowBand": "Dưới khoảng", "aboveBand": "Trên khoảng", "band": "So sánh khoảng điểm học tập", "cmpLine": "SAT của bạn <b>{sat}</b> · khoảng công bố <b>{lo}–{hi}</b>", "cmpSections": "Khoảng công bố: EBRW <b>{ebrw}</b> · Math <b>{math}</b> (không công bố điểm tổng)", "cmpTestFree": "Trường này không xét SAT/ACT (UC test-free). Xét GPA, môn học và bài luận.", "bandNote": "Đây là so sánh khoảng điểm: điểm bạn nhập được đặt cạnh khoảng điểm của sinh viên đã nhập học do trường công bố. Không phải xác suất trúng tuyển của cá nhân hay kết luận an toàn/vừa sức.", "bandSectionsNote": "Common Data Set của Harvard để trống điểm tổng, nên EBRW và Math được hiển thị riêng và không cộng lại.", "satSplitShort": "EBRW · Math riêng", "satSplitEbrw": "SAT EBRW 25–75", "satSplitMath": "SAT Math 25–75", "satSplitNote": "Không công bố điểm tổng (không cộng hai phần)", "cdsNote": "CDS 2025-26 · kiểm tra 2026-11-23", "empty": "Không có trường phù hợp. Hãy chọn ngành “Tất cả ngành”.", "majorsNote": "Bộ lọc ngành là danh sách tuyển chọn của Vertex · không phải toàn bộ ngành của trường", "privateType": "Tư thục", "publicType": "Công lập", "lacType": "Khai phóng", "natType": "Đại học tổng hợp", "earnBadge": "Thu nhập trung vị sau 10 năm", "sources": "Nguồn", "checked": "kiểm tra 2026-11-23", "interp": "Diễn giải của Vertex", "srcAdmit": "CDS 2025-26 · C1", "srcCds2526": "CDS 2025-26 · C9", "srcCds2425": "CDS 2024-25 · C9", "srcSecondary": "CDS 2025-26 · C9 · nguồn thứ cấp (chờ đối chiếu bản gốc)", "cohortFall": "nhóm Fall {y}", "deadlineSrc": "Trang tuyển sinh chính thức · Fall 2027", "earnSrc": "College Scorecard · truy vấn 2026-11-23", "earnSrcLabel": "Thu nhập (10 năm)", "cycle": "Fall 2027", "ucRound": "Nộp UC", "closed": "Đã hết hạn", "ucWindow": "Thời gian nộp 1/10–30/11/2026", "chkShort": "kiểm tra 2026-11-23", "deadlines": "Hạn nộp", "dlNote": "Hạn nộp theo kỳ Fall 2027, đã kiểm tra ngày 2026-11-23. Đợt đã qua được đánh dấu “Đã hết hạn”.", "mission": "Sứ mệnh & giá trị", "missionNote": "Bản tóm tắt diễn giải của Vertex từ sứ mệnh, giá trị công bố. Không phải câu chữ chính thức mới nhất hay đề bài luận.", "keywords": "Từ khóa bài luận", "keywordsNote": "Diễn giải của Vertex, không phải đề bài luận chính thức mới nhất của trường.", "tips": "Hướng viết bài luận", "gpaBench": "GPA tham khảo", "gpaBenchNote": "Chuẩn tham khảo Vertex, không chính thức", "hook": "Ghi chú Vertex", "back": "← Về danh sách trường", "changeSchool": "Đổi trường", "pick": "Hãy chọn một trường", "pickHint": "Nhấn thẻ trường ở tab 1 để xem giá trị và hướng viết bài luận.", "t2School": "Chọn trường", "t2Eye": "FIT & ESSAYS", "t2Title": "Nhà trường tìm kiếm điều gì", "earnTitle": "Thu nhập sau tốt nghiệp & nghề nghiệp tương lai", "earnShort": "Thu nhập trung vị sau 10 năm", "earnInst": "Thu nhập trung vị cấp trường · 10 năm sau khi nhập học", "earnInstNote": "College Scorecard · trung vị toàn trường của sinh viên có hỗ trợ tài chính liên bang", "earnLine": "Số tiền đầy đủ {full} · USD", "earnPull": "truy vấn 2026-11-23", "careerTitle": "Nghề tham chiếu theo ngành", "blsPay": "Lương trung vị BLS 2025", "careerNote": "Lương trung vị toàn quốc năm 2025 theo BLS Occupational Outlook Handbook. Không phải lương khởi điểm theo trường hay ngành.", "earnDisc": "Trung vị cấp trường (Scorecard) và lương trung vị nghề toàn quốc (BLS) là hai con số khác nhau. Chúng thay đổi theo ngành, khu vực, kinh nghiệm và giờ làm — chỉ dùng để tham khảo.", "t3Eye": "MY COMPASS", "t3Title": "Chỉ số tự đánh giá & lộ trình 4 năm", "t3Sub": "Tự đánh giá 7 chỉ số để VCI và ưu tiên tiếp theo cập nhật ngay.", "vci": "VCI · tự đánh giá 7 chỉ số", "outOf": "OUT OF 100", "tierPrefix": "Nhóm tự đánh giá", "tierNote": "VCI là điểm tự đánh giá do bạn cho 7 chỉ số rồi cộng theo trọng số. Đây không phải chuẩn tuyển sinh hay chỉ số đã được kiểm chứng bên ngoài.", "tierBands": ["1 (85–100)", "2 (72–84)", "3 (58–71)", "4 (0–57)"], "pillars": "Bảy chỉ số cốt lõi", "weight": "trọng số", "adviceTitle": "Ưu tiên tiếp theo", "advice": "Chỉ số thấp nhất là <b>{name}</b>. Hãy dành thời gian đầu tiên cho chỉ số này trong học kỳ.", "adviceHigh": "Cả bảy chỉ số đều đang tăng. Hãy chuyển sang bài luận và chiến lược nộp đơn.", "roadmap": "Lộ trình G9–G12", "programs": "Chương trình Vertex Education", "svhs": "Khóa học tín chỉ Mỹ SVHS", "svhsSub": "Tín chỉ & GPA trung học Mỹ", "sdg": "Chứng nhận tác động SDG Youth", "sdgSub": "Dự án cộng đồng & chứng nhận", "progDisabled": "Bản kiểm tra · liên kết mở sau khi phê duyệt", "ctaDisabled": "Danh sách chờ bị vô hiệu hóa (bản kiểm tra)", "ctaSub": "Không phải ai đến trước · học phí tư vấn riêng", "storageNote": "Giá trị nhập được tự động lưu chỉ trên trình duyệt của thiết bị này (localStorage). Không gửi lên máy chủ.", "reset": "Xóa dữ liệu cục bộ", "resetDone": "Đã xóa giá trị đã lưu và trở về mặc định.", "disc": "Bản v0.1.1 dùng kiểm tra nội bộ. Khoảng điểm, VCI và thu nhập đều là giá trị tham khảo; hãy xác nhận quyết định nộp đơn bằng nguồn chính thức và tư vấn.", "footer": "Bản kiểm tra nội bộ · không phát hành ra ngoài", "majors": {"all": "Tất cả ngành", "business": "Kinh doanh", "cs": "Khoa học máy tính", "engineering": "Kỹ thuật", "bio": "Sinh học & Dự bị y", "econ": "Kinh tế", "polisci": "Chính trị học", "psych": "Tâm lý học", "arts": "Nghệ thuật & Thiết kế", "math": "Toán & Vật lý", "enviro": "Môi trường & Bền vững", "edu": "Giáo dục", "hospitality": "Quản lý khách sạn", "humanities": "Văn học & Nhân văn (Đạo đức AI)", "ai": "AI & Khoa học dữ liệu", "biohealth": "Sinh học & Khoa học thần kinh", "climate": "Công nghệ khí hậu & Năng lượng", "robotics": "Robot & Hàng không vũ trụ", "fintech": "FinTech & Tài chính định lượng", "media": "Truyền thông số & Nội dung", "policy": "Chính sách công & Quốc tế học"}, "pillarsLabel": {"academics": ["Học thuật", "SAT·GPA"], "leadership": ["Lãnh đạo", "vai trò"], "majorDepth": ["Chiều sâu ngành", "môn học & dự án"], "research": ["Nghiên cứu", "độ sâu tìm tòi"], "impact": ["SDG & cộng đồng", "tác động"], "essay": ["Bài luận", "câu chuyện"], "strategy": ["Chiến lược", "thời gian & đợt"]}, "road": [{"t": "G9 · Xây nền", "b": ["Hình thành thói quen GPA và cân bằng độ khó", "Khám phá 3–4 hoạt động", "Thi thử SAT để biết điểm xuất phát"]}, {"t": "G10 · Định hướng", "b": ["Vào AP/IB hoặc Honors", "Đảm nhận 1–2 vai trò lãnh đạo", "Thi PSAT và thu hẹp ngành"]}, {"t": "G11 · Tạo thành tích", "b": ["Giữ GPA ở mức cao nhất", "Hoàn thành mục tiêu SAT/ACT", "Nghiên cứu/capstone · xây quan hệ với người giới thiệu"]}, {"t": "G12 · Hoàn tất hồ sơ", "b": ["Common App + bài luận riêng", "Quản lý ED/EA tháng 11, RD tháng 1", "Theo dõi CSS Profile / FAFSA"]}]}};
   var SCHOOLS = [
-    {id:"harvard", short:"HAR", name:"Harvard University", loc:"Cambridge, MA", type:"private", kind:"NU",
-     admit:4.2, sat:[1510,1580], gpaBench:3.95, rd:"Jan 1", rdNote:"23:59 local", early:"REA · Nov 1",
-     majors:["econ","polisci","bio","cs","math","psych","engineering"],
-     values:["Intellectual Vitality","Leadership","Community Impact"],
+    {id:"harvard", short:"HAR", name:"Harvard University", loc:"Cambridge, MA", type:"private", kind:"NU", admit:4.2,
+     sat:null, satSplit:{ebrw:[740,780],math:[770,800]}, testFree:false, satSrc:"cds2425", cohort:2024,
+     gpaBench:3.95, rounds:[{k:"REA",iso:"2026-11-01"},{k:"RD",iso:"2027-01-01"}], majors:["econ","polisci","bio","cs","math","psych","engineering","humanities","ai","biohealth","fintech","policy"], values:["Intellectual Vitality","Leadership","Community Impact"],
+     earn:121957, scoreId:166027,
      hook:{ko:"House 시스템 · 리버럴 아츠 + 연구",en:"Residential Houses · liberal arts + research",vi:"Hệ thống House · khai phóng + nghiên cứu"},
-     mission:{
-       ko:"진리(Veritas)를 중심으로 한 리버럴 아츠와 기숙형 House 공동체. 지적 호기심과 공동체 기여를 함께 봅니다.",
-       en:"Liberal arts around Veritas, lived in residential Houses — intellectual curiosity paired with contribution to community.",
-       vi:"Giáo dục khai phóng theo tinh thần Veritas trong hệ thống nhà ở — tò mò trí tuệ gắn với đóng góp cộng đồng."},
-     tips:{
-       ko:["한 가지 질문을 오래 파고든 흔적","내가 속한 공동체에 남긴 구체적 변화"],
-       en:["Evidence of one question pursued deeply","A concrete change you made in a community"],
-       vi:["Dấu vết theo đuổi một câu hỏi đến cùng","Thay đổi cụ thể bạn tạo ra trong cộng đồng"]}},
-
-    {id:"mit", short:"MIT", name:"Massachusetts Institute of Technology", loc:"Cambridge, MA", type:"private", kind:"NU",
-     admit:4.6, sat:[1520,1570], gpaBench:3.95, rd:"Jan 4", rdNote:"", early:"EA · Nov 1",
-     majors:["engineering","cs","math","bio","econ","business"],
-     values:["Risk-taking","Hands-on Building","Collaboration"],
+     mission:{ko:"진리(Veritas)를 중심으로 한 리버럴 아츠와 기숙형 House 공동체. 지적 호기심과 공동체 기여를 함께 봅니다.",en:"Liberal arts around Veritas, lived in residential Houses — intellectual curiosity paired with contribution to community.",vi:"Giáo dục khai phóng theo tinh thần Veritas trong hệ thống nhà ở — tò mò trí tuệ gắn với đóng góp cộng đồng."},
+     tips:{ko:["한 가지 질문을 오래 파고든 흔적","내가 속한 공동체에 남긴 구체적 변화"],en:["Evidence of one question pursued deeply","A concrete change you made in a community"],vi:["Dấu vết theo đuổi một câu hỏi đến cùng","Thay đổi cụ thể bạn tạo ra trong cộng đồng"]}},
+    {id:"mit", short:"MIT", name:"Massachusetts Institute of Technology", loc:"Cambridge, MA", type:"private", kind:"NU", admit:4.6,
+     sat:[1520,1570], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.95, rounds:[{k:"EA",iso:"2026-11-01"},{k:"RD",iso:"2027-01-04"}], majors:["engineering","cs","math","bio","econ","business","ai","biohealth","robotics","climate","fintech"], values:["Risk-taking","Hands-on Building","Collaboration"],
+     earn:152553, scoreId:166683,
      hook:{ko:"UROP 학부연구 · Maker 문화",en:"UROP undergraduate research · maker culture",vi:"Nghiên cứu UROP · văn hóa maker"},
-     mission:{
-       ko:"‘손과 머리(Mens et Manus)’. 직접 만들고 부딪히며 문제를 푸는 학교로, 실패를 감수한 도전과 협업을 봅니다.",
-       en:"Mens et Manus — learning by building. MIT looks for risk-taking, hands-on problem solving and collaboration.",
-       vi:"Mens et Manus — học qua việc làm. MIT tìm kiếm tinh thần dám thử, giải quyết vấn đề thực hành và hợp tác."},
-     tips:{
-       ko:["직접 만든 것의 과정과 실패·수정","동료와 함께 푼 문제의 역할 분담"],
-       en:["The process, failure and fixes behind something you built","How you split work when solving with others"],
-       vi:["Quá trình, thất bại và cách sửa khi tự làm ra sản phẩm","Cách bạn phối hợp khi giải quyết vấn đề cùng người khác"]}},
-
-    {id:"williams", short:"WIL", name:"Williams College", loc:"Williamstown, MA", type:"private", kind:"LAC",
-     admit:8.6, sat:[1500,1560], gpaBench:3.90, rd:"Jan 4", rdNote:"", early:"ED · Nov 15",
-     majors:["econ","polisci","bio","math","psych","arts","enviro"],
-     values:["Independent Thinking","Tutorial Dialogue","Community"],
+     mission:{ko:"‘손과 머리(Mens et Manus)’. 직접 만들고 부딪히며 문제를 푸는 학교로, 실패를 감수한 도전과 협업을 봅니다.",en:"Mens et Manus — learning by building. MIT looks for risk-taking, hands-on problem solving and collaboration.",vi:"Mens et Manus — học qua việc làm. MIT tìm kiếm tinh thần dám thử, giải quyết vấn đề thực hành và hợp tác."},
+     tips:{ko:["직접 만든 것의 과정과 실패·수정","동료와 함께 푼 문제의 역할 분담"],en:["The process, failure and fixes behind something you built","How you split work when solving with others"],vi:["Quá trình, thất bại và cách sửa khi tự làm ra sản phẩm","Cách bạn phối hợp khi giải quyết vấn đề cùng người khác"]}},
+    {id:"williams", short:"WIL", name:"Williams College", loc:"Williamstown, MA", type:"private", kind:"LAC", admit:8.6,
+     sat:[1490,1550], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED",iso:"2026-11-15"},{k:"RD",iso:"2027-01-04"}], majors:["econ","polisci","bio","math","psych","arts","enviro","humanities","biohealth","climate","policy"], values:["Independent Thinking","Tutorial Dialogue","Community"],
+     earn:95954, scoreId:168342,
      hook:{ko:"Tutorial(2인 수업) 시스템",en:"The tutorial (two-student seminar) system",vi:"Hệ thống tutorial (lớp 2 sinh viên)"},
-     mission:{
-       ko:"Tutorial(2인 수업)로 대표되는 소규모 리버럴 아츠. 독립적 사고와 토론, 공동체 생활을 중시합니다.",
-       en:"Small liberal arts anchored by the tutorial — independent thinking, dialogue and community life.",
-       vi:"Giáo dục khai phóng quy mô nhỏ với lớp tutorial — tư duy độc lập, đối thoại và đời sống cộng đồng."},
-     tips:{
-       ko:["스스로 세운 가설을 반박하며 다듬은 경험","토론에서 상대를 설득한 방식"],
-       en:["A hypothesis you challenged and refined yourself","How you persuaded someone in a discussion"],
-       vi:["Trải nghiệm tự đặt giả thuyết rồi phản biện, chỉnh sửa","Cách bạn thuyết phục người khác trong thảo luận"]}},
-
-    {id:"amherst", short:"AMH", name:"Amherst College", loc:"Amherst, MA", type:"private", kind:"LAC",
-     admit:7.7, sat:[1500,1560], gpaBench:3.90, rd:"Jan 5", rdNote:"", early:"ED 운영 · 날짜 공식 확인",
-     majors:["econ","polisci","bio","math","psych","arts","enviro"],
-     values:["Open Inquiry","Diversity","Critical Thinking"],
+     mission:{ko:"Tutorial(2인 수업)로 대표되는 소규모 리버럴 아츠. 독립적 사고와 토론, 공동체 생활을 중시합니다.",en:"Small liberal arts anchored by the tutorial — independent thinking, dialogue and community life.",vi:"Giáo dục khai phóng quy mô nhỏ với lớp tutorial — tư duy độc lập, đối thoại và đời sống cộng đồng."},
+     tips:{ko:["스스로 세운 가설을 반박하며 다듬은 경험","토론에서 상대를 설득한 방식"],en:["A hypothesis you challenged and refined yourself","How you persuaded someone in a discussion"],vi:["Trải nghiệm tự đặt giả thuyết rồi phản biện, chỉnh sửa","Cách bạn thuyết phục người khác trong thảo luận"]}},
+    {id:"amherst", short:"AMH", name:"Amherst College", loc:"Amherst, MA", type:"private", kind:"LAC", admit:7.7,
+     sat:[1470,1540], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2024,
+     gpaBench:3.90, rounds:[{k:"ED",iso:"2026-11-09"},{k:"RD",iso:"2027-01-05"}], majors:["econ","polisci","bio","math","psych","arts","enviro","humanities","biohealth","climate","policy"], values:["Open Inquiry","Diversity","Critical Thinking"],
+     earn:95161, scoreId:164465,
      hook:{ko:"Open Curriculum · 소수정예 세미나",en:"Open curriculum · small seminars",vi:"Chương trình mở · seminar quy mô nhỏ"},
-     mission:{
-       ko:"오픈 커리큘럼과 다양성을 축으로 열린 탐구를 권합니다. 비판적 사고와 공동체 기여를 봅니다.",
-       en:"An open curriculum built on open inquiry and diversity — critical thinking and contribution.",
-       vi:"Chương trình mở với tinh thần khai phóng và đa dạng — tư duy phản biện và đóng góp."},
-     tips:{
-       ko:["정해진 길 없이 스스로 설계한 학습","다른 관점을 가진 사람과 만든 합의"],
-       en:["Learning you designed without a prescribed path","An agreement you built with someone who disagreed"],
-       vi:["Việc học do bạn tự thiết kế, không theo lối mòn","Thỏa thuận bạn tạo ra với người có quan điểm khác"]}},
-
-    {id:"bowdoin", short:"BOW", name:"Bowdoin College", loc:"Brunswick, ME", type:"private", kind:"LAC",
-     admit:6.8, sat:[1470,1540], gpaBench:3.90, rd:"Jan 5", rdNote:"", early:"ED I·II 운영",
-     majors:["polisci","econ","bio","enviro","math","psych","arts"],
-     values:["Common Good","Generosity","Curiosity"],
+     mission:{ko:"오픈 커리큘럼과 다양성을 축으로 열린 탐구를 권합니다. 비판적 사고와 공동체 기여를 봅니다.",en:"An open curriculum built on open inquiry and diversity — critical thinking and contribution.",vi:"Chương trình mở với tinh thần khai phóng và đa dạng — tư duy phản biện và đóng góp."},
+     tips:{ko:["정해진 길 없이 스스로 설계한 학습","다른 관점을 가진 사람과 만든 합의"],en:["Learning you designed without a prescribed path","An agreement you built with someone who disagreed"],vi:["Việc học do bạn tự thiết kế, không theo lối mòn","Thỏa thuận bạn tạo ra với người có quan điểm khác"]}},
+    {id:"bowdoin", short:"BOW", name:"Bowdoin College", loc:"Brunswick, ME", type:"private", kind:"LAC", admit:6.8,
+     sat:[1470,1540], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED I",iso:"2026-11-15"},{k:"ED II",iso:"2027-01-05"},{k:"RD",iso:"2027-01-05"}], majors:["polisci","econ","bio","enviro","math","psych","arts","humanities","biohealth","climate","policy"], values:["Common Good","Generosity","Curiosity"],
+     earn:90153, scoreId:161004,
      hook:{ko:"Common Good · 해안 환경 연구",en:"The common good · coastal & environmental studies",vi:"Lợi ích chung · nghiên cứu môi trường ven biển"},
-     mission:{
-       ko:"‘공동선(Common Good)’과 너그러운 공동체 문화. 환경·해안 연구와 소규모 세미나가 강점입니다.",
-       en:"The common good and a generous community — coastal and environmental studies, small seminars.",
-       vi:"Vì lợi ích chung và cộng đồng rộng mở — mạnh nghiên cứu môi trường ven biển, seminar nhỏ."},
-     tips:{
-       ko:["공동선을 위해 움직인 구체적 장면","호기심이 주변으로 번진 경험"],
-       en:["A concrete moment you acted for the common good","How your curiosity spread to others"],
-       vi:["Khoảnh khắc cụ thể bạn hành động vì lợi ích chung","Cách sự tò mò của bạn lan sang người khác"]}},
-
-    {id:"duke", short:"DUKE", name:"Duke University", loc:"Durham, NC", type:"private", kind:"NU",
-     admit:5.2, sat:[1500,1570], gpaBench:3.90, rd:"Jan 4", rdNote:"", early:"ED · Nov 2",
-     majors:["bio","econ","polisci","cs","engineering","psych","enviro"],
-     values:["Service","Interdisciplinary","Leadership"],
+     mission:{ko:"‘공동선(Common Good)’과 너그러운 공동체 문화. 환경·해안 연구와 소규모 세미나가 강점입니다.",en:"The common good and a generous community — coastal and environmental studies, small seminars.",vi:"Vì lợi ích chung và cộng đồng rộng mở — mạnh nghiên cứu môi trường ven biển, seminar nhỏ."},
+     tips:{ko:["공동선을 위해 움직인 구체적 장면","호기심이 주변으로 번진 경험"],en:["A concrete moment you acted for the common good","How your curiosity spread to others"],vi:["Khoảnh khắc cụ thể bạn hành động vì lợi ích chung","Cách sự tò mò của bạn lan sang người khác"]}},
+    {id:"duke", short:"DUKE", name:"Duke University", loc:"Durham, NC", type:"private", kind:"NU", admit:5.2,
+     sat:[1510,1570], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED",iso:"2026-11-02"},{k:"RD",iso:"2027-01-04"}], majors:["bio","econ","polisci","cs","engineering","psych","enviro","humanities","ai","biohealth","climate","robotics","fintech","policy"], values:["Service","Interdisciplinary","Leadership"],
+     earn:113937, scoreId:198419,
      hook:{ko:"DukeEngage · 학제 간 certificate",en:"DukeEngage · interdisciplinary certificates",vi:"DukeEngage · chứng chỉ liên ngành"},
-     mission:{
-       ko:"지식을 사회를 위해 쓰는 학교. 학제 간 결합과 DukeEngage 같은 지역 참여를 강조합니다.",
-       en:"Knowledge in the service of society — interdisciplinary work and community engagement like DukeEngage.",
-       vi:"Tri thức phục vụ xã hội — khuyến khích liên ngành và gắn kết cộng đồng (DukeEngage)."},
-     tips:{
-       ko:["전공 두 개를 연결한 프로젝트","지역 사회와 함께 만든 결과물"],
-       en:["A project connecting two fields","Something you produced with a community"],
-       vi:["Dự án kết nối hai lĩnh vực","Sản phẩm bạn tạo ra cùng cộng đồng"]}},
-
-    {id:"stonybrook", short:"SBU", name:"Stony Brook University (SUNY)", loc:"Stony Brook, NY", type:"public", kind:"NU",
-     admit:48.2, sat:[1350,1470], gpaBench:3.55, rd:"Jan 15", rdNote:"", early:"EA · Nov 1",
-     majors:["bio","cs","engineering","math","psych","business"],
-     values:["Resilience","Research","Contribution"],
+     mission:{ko:"지식을 사회를 위해 쓰는 학교. 학제 간 결합과 DukeEngage 같은 지역 참여를 강조합니다.",en:"Knowledge in the service of society — interdisciplinary work and community engagement like DukeEngage.",vi:"Tri thức phục vụ xã hội — khuyến khích liên ngành và gắn kết cộng đồng (DukeEngage)."},
+     tips:{ko:["전공 두 개를 연결한 프로젝트","지역 사회와 함께 만든 결과물"],en:["A project connecting two fields","Something you produced with a community"],vi:["Dự án kết nối hai lĩnh vực","Sản phẩm bạn tạo ra cùng cộng đồng"]}},
+    {id:"stonybrook", short:"SBU", name:"Stony Brook University (SUNY)", loc:"Stony Brook, NY", type:"public", kind:"NU", admit:48.2,
+     sat:[1350,1470], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.55, rounds:[{k:"EA",iso:"2026-11-01"},{k:"RD",iso:"2027-01-15"}], majors:["bio","cs","engineering","math","psych","business","ai","biohealth","robotics","climate","policy"], values:["Resilience","Research","Contribution"],
+     earn:83232, scoreId:196097,
      hook:{ko:"SUNY 연구중심 · 병원 연계",en:"Research-intensive SUNY · hospital links",vi:"SUNY nghiên cứu mạnh · liên kết bệnh viện"},
-     mission:{
-       ko:"SUNY의 연구중심 대학. 병원·STEM 인프라가 크고, 성실성과 연구 참여를 높이 봅니다.",
-       en:"A research-intensive SUNY campus with strong STEM and hospital links — resilience and research matter.",
-       vi:"Đại học nghiên cứu của hệ SUNY, mạnh STEM và liên kết bệnh viện — coi trọng sự bền bỉ và nghiên cứu."},
-     tips:{
-       ko:["어려운 환경을 버틴 과정","실험·연구에 참여한 구체적 역할"],
-       en:["How you persisted through a hard stretch","Your specific role in a lab or study"],
-       vi:["Quá trình bạn kiên trì vượt khó","Vai trò cụ thể của bạn trong phòng lab hay nghiên cứu"]}},
-
-    {id:"umich", short:"UM", name:"University of Michigan", loc:"Ann Arbor, MI", type:"public", kind:"NU",
-     admit:16.4, sat:[1370,1530], gpaBench:3.75, rd:"Feb 1", rdNote:"", early:"EA · Nov 1",
-     majors:["engineering","cs","business","bio","econ","psych","arts","edu","enviro"],
-     values:["Leadership","Impact","Intellectual Breadth"],
+     mission:{ko:"SUNY의 연구중심 대학. 병원·STEM 인프라가 크고, 성실성과 연구 참여를 높이 봅니다.",en:"A research-intensive SUNY campus with strong STEM and hospital links — resilience and research matter.",vi:"Đại học nghiên cứu của hệ SUNY, mạnh STEM và liên kết bệnh viện — coi trọng sự bền bỉ và nghiên cứu."},
+     tips:{ko:["어려운 환경을 버틴 과정","실험·연구에 참여한 구체적 역할"],en:["How you persisted through a hard stretch","Your specific role in a lab or study"],vi:["Quá trình bạn kiên trì vượt khó","Vai trò cụ thể của bạn trong phòng lab hay nghiên cứu"]}},
+    {id:"umich", short:"UM", name:"University of Michigan", loc:"Ann Arbor, MI", type:"public", kind:"NU", admit:16.4,
+     sat:[1370,1530], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.75, rounds:[{k:"ED",iso:"2026-11-01"},{k:"EA",iso:"2026-11-01"},{k:"RD",iso:"2027-02-01"}], majors:["engineering","cs","business","bio","econ","psych","arts","edu","enviro","humanities","ai","biohealth","climate","robotics","fintech","media","policy"], values:["Leadership","Impact","Intellectual Breadth"],
+     earn:92832, scoreId:170976,
      hook:{ko:"Ross 경영대 · LSA 폭넓은 전공",en:"Ross School of Business · broad LSA majors",vi:"Ross School of Business · ngành rộng ở LSA"},
-     mission:{
-       ko:"‘Leaders and the Best’를 내건 공립 연구대학. 폭넓은 교양과 Ross 경영대 등 전문대학의 깊이를 함께 봅니다.",
-       en:"A public research university of breadth and depth — from LSA to the Ross School of Business.",
-       vi:"Đại học công lập nghiên cứu với bề rộng và chiều sâu — từ LSA đến Ross School of Business."},
-     tips:{
-       ko:["큰 조직에서 맡은 리더십","전공 밖 과목과 연결한 관심사"],
-       en:["Leadership inside a large organization","An interest linked to coursework outside your major"],
-       vi:["Vai trò lãnh đạo trong một tổ chức lớn","Mối quan tâm gắn với môn học ngoài ngành chính"]}},
-
-    {id:"nyu", short:"NYU", name:"New York University", loc:"New York, NY", type:"private", kind:"NU",
-     admit:9.1, sat:[1480,1550], gpaBench:3.70, rd:"Jan 5", rdNote:"", early:"ED I · Nov 1 · ED II · Jan 1",
-     majors:["business","cs","engineering","arts","econ","psych","polisci","math"],
-     values:["Independence","Global Mindset","Initiative"],
+     mission:{ko:"‘Leaders and the Best’를 내건 공립 연구대학. 폭넓은 교양과 Ross 경영대 등 전문대학의 깊이를 함께 봅니다.",en:"A public research university of breadth and depth — from LSA to the Ross School of Business.",vi:"Đại học công lập nghiên cứu với bề rộng và chiều sâu — từ LSA đến Ross School of Business."},
+     tips:{ko:["큰 조직에서 맡은 리더십","전공 밖 과목과 연결한 관심사"],en:["Leadership inside a large organization","An interest linked to coursework outside your major"],vi:["Vai trò lãnh đạo trong một tổ chức lớn","Mối quan tâm gắn với môn học ngoài ngành chính"]}},
+    {id:"nyu", short:"NYU", name:"New York University", loc:"New York, NY", type:"private", kind:"NU", admit:9.1,
+     sat:[1480,1550], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.70, rounds:[{k:"ED I",iso:"2026-11-01"},{k:"ED II",iso:"2027-01-01"},{k:"RD",iso:"2027-01-05"}], majors:["business","cs","engineering","arts","econ","psych","polisci","math","humanities","ai","hospitality","media","fintech","policy"], values:["Independence","Global Mindset","Initiative"],
+     earn:90957, scoreId:193900,
      hook:{ko:"Stern · Tisch · 글로벌 캠퍼스",en:"Stern · Tisch · global campus network",vi:"Stern · Tisch · mạng lưới campus toàn cầu"},
-     mission:{
-       ko:"도시 자체가 캠퍼스. Stern·Tisch와 글로벌 캠퍼스 네트워크, 독립적 실행력을 봅니다.",
-       en:"The city is the campus — Stern, Tisch and a global network; independence and initiative stand out.",
-       vi:"Thành phố là khuôn viên — Stern, Tisch và mạng lưới toàn cầu; đề cao độc lập và chủ động."},
-     tips:{
-       ko:["혼자 시작해 끝까지 밀어붙인 일","도시·글로벌 환경을 활용한 경험"],
-       en:["Something you started alone and finished","How you used a city or global setting"],
-       vi:["Việc bạn tự khởi đầu và theo đến cùng","Cách bạn tận dụng môi trường đô thị/toàn cầu"]}},
-
-    {id:"berkeley", short:"UCB", name:"University of California, Berkeley", loc:"Berkeley, CA", type:"public", kind:"NU",
-     admit:11.4, sat:null, gpaBench:3.85, rd:"Nov 30", rdNote:"UC filing period Oct 1–30", early:"없음 · UC 단일 지원",
-     majors:["cs","engineering","business","econ","bio","math","polisci","enviro","arts"],
-     values:["Public Impact","Inquiry","Resilience"],
+     mission:{ko:"도시 자체가 캠퍼스. Stern·Tisch와 글로벌 캠퍼스 네트워크, 독립적 실행력을 봅니다.",en:"The city is the campus — Stern, Tisch and a global network; independence and initiative stand out.",vi:"Thành phố là khuôn viên — Stern, Tisch và mạng lưới toàn cầu; đề cao độc lập và chủ động."},
+     tips:{ko:["혼자 시작해 끝까지 밀어붙인 일","도시·글로벌 환경을 활용한 경험"],en:["Something you started alone and finished","How you used a city or global setting"],vi:["Việc bạn tự khởi đầu và theo đến cùng","Cách bạn tận dụng môi trường đô thị/toàn cầu"]}},
+    {id:"berkeley", short:"UCB", name:"University of California, Berkeley", loc:"Berkeley, CA", type:"public", kind:"NU", admit:11.4,
+     sat:null, satSplit:null, testFree:true, satSrc:"testfree", cohort:null,
+     gpaBench:3.85, rounds:[{k:"UC",iso:"2026-11-30"}], majors:["cs","engineering","business","econ","bio","math","polisci","enviro","arts","humanities","ai","biohealth","climate","robotics","fintech","media","policy"], values:["Public Impact","Inquiry","Resilience"],
+     earn:100212, scoreId:110635,
      hook:{ko:"EECS · Haas 경영대",en:"EECS · Haas School of Business",vi:"EECS · Haas School of Business"},
-     mission:{
-       ko:"공립대의 공공 미션과 연구. 폭넓은 교양 위에 전공 깊이를 쌓고, 사회적 영향력을 중시합니다.",
-       en:"A public mission with research depth — breadth, then depth, with social impact in view.",
-       vi:"Sứ mệnh công lập gắn với nghiên cứu — bề rộng nền tảng, chiều sâu ngành và tác động xã hội."},
-     tips:{
-       ko:["공공 문제를 다룬 프로젝트","큰 수업에서 스스로 만든 기회"],
-       en:["A project addressing a public problem","Opportunity you created inside a large class"],
-       vi:["Dự án giải quyết một vấn đề công","Cơ hội bạn tự tạo trong lớp học lớn"]}},
-
-    {id:"ucla", short:"UCLA", name:"University of California, Los Angeles", loc:"Los Angeles, CA", type:"public", kind:"NU",
-     admit:9.4, sat:null, gpaBench:3.85, rd:"Nov 30", rdNote:"UC filing period Oct 1–30", early:"없음 · UC 단일 지원",
-     majors:["bio","psych","cs","engineering","econ","business","arts","polisci"],
-     values:["Optimism","Creativity","Community"],
+     mission:{ko:"공립대의 공공 미션과 연구. 폭넓은 교양 위에 전공 깊이를 쌓고, 사회적 영향력을 중시합니다.",en:"A public mission with research depth — breadth, then depth, with social impact in view.",vi:"Sứ mệnh công lập gắn với nghiên cứu — bề rộng nền tảng, chiều sâu ngành và tác động xã hội."},
+     tips:{ko:["공공 문제를 다룬 프로젝트","큰 수업에서 스스로 만든 기회"],en:["A project addressing a public problem","Opportunity you created inside a large class"],vi:["Dự án giải quyết một vấn đề công","Cơ hội bạn tự tạo trong lớp học lớn"]}},
+    {id:"ucla", short:"UCLA", name:"University of California, Los Angeles", loc:"Los Angeles, CA", type:"public", kind:"NU", admit:9.4,
+     sat:null, satSplit:null, testFree:true, satSrc:"testfree", cohort:null,
+     gpaBench:3.85, rounds:[{k:"UC",iso:"2026-11-30"}], majors:["bio","psych","cs","engineering","econ","business","arts","polisci","humanities","ai","biohealth","climate","media","policy"], values:["Optimism","Creativity","Community"],
+     earn:88581, scoreId:110662,
      hook:{ko:"생명과학 · 심리학 · 예술",en:"Life sciences · psychology · arts",vi:"Khoa học sự sống · tâm lý học · nghệ thuật"},
-     mission:{
-       ko:"‘Optimists’를 내건 공립 연구대학. 생명과학·심리학·예술이 강하고, 학제 간 협업을 봅니다.",
-       en:"A public research university of optimists — strong in life sciences, psychology and the arts.",
-       vi:"Đại học công lập nghiên cứu với tinh thần lạc quan — mạnh sinh học, tâm lý học và nghệ thuật."},
-     tips:{
-       ko:["협업으로 만든 창작·연구","공동체 안에서 만든 변화"],
-       en:["Creative or research work made with others","A change you made within a community"],
-       vi:["Tác phẩm sáng tạo/nghiên cứu làm cùng người khác","Thay đổi bạn tạo ra trong cộng đồng"]}},
-
-    {id:"cornell", short:"COR", name:"Cornell University", loc:"Ithaca, NY", type:"private", kind:"NU",
-     admit:8.4, sat:[1510,1560], gpaBench:3.90, rd:"Jan 2", rdNote:"", early:"ED · Nov 1",
-     majors:["engineering","cs","business","bio","econ","hospitality","enviro","polisci","math"],
-     values:["Breadth","Practical Impact","Curiosity"],
+     mission:{ko:"‘Optimists’를 내건 공립 연구대학. 생명과학·심리학·예술이 강하고, 학제 간 협업을 봅니다.",en:"A public research university of optimists — strong in life sciences, psychology and the arts.",vi:"Đại học công lập nghiên cứu với tinh thần lạc quan — mạnh sinh học, tâm lý học và nghệ thuật."},
+     tips:{ko:["협업으로 만든 창작·연구","공동체 안에서 만든 변화"],en:["Creative or research work made with others","A change you made within a community"],vi:["Tác phẩm sáng tạo/nghiên cứu làm cùng người khác","Thay đổi bạn tạo ra trong cộng đồng"]}},
+    {id:"cornell", short:"COR", name:"Cornell University", loc:"Ithaca, NY", type:"private", kind:"NU", admit:8.4,
+     sat:[1490,1550], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED",iso:"2026-11-01"},{k:"RD",iso:"2027-01-02"}], majors:["engineering","cs","business","bio","econ","hospitality","enviro","polisci","math","humanities","ai","biohealth","climate","robotics","fintech","media","policy"], values:["Breadth","Practical Impact","Curiosity"],
+     earn:113531, scoreId:190415,
      hook:{ko:"7개 단과대 · Hotel School",en:"Seven colleges · School of Hotel Administration",vi:"Bảy trường thành viên · Quản trị khách sạn"},
-     mission:{
-       ko:"‘누구에게나 어떤 공부든(Any person, any study)’. 7개 단과대의 폭과 Hotel School 같은 실용 학문이 특징입니다.",
-       en:"“Any person, any study” — seven colleges, from arts and sciences to the School of Hotel Administration.",
-       vi:"“Bất kỳ ai, bất kỳ ngành học nào” — bảy trường thành viên, từ khoa học cơ bản đến Quản trị khách sạn."},
-     tips:{
-       ko:["배움을 실제 문제에 적용한 사례","관심 분야가 넓어진 이유와 연결"],
-       en:["A case where you applied learning to a real problem","Why your interests broadened — and how they connect"],
-       vi:["Trường hợp bạn áp dụng kiến thức vào vấn đề thực","Lý do mối quan tâm mở rộng và cách chúng kết nối"]}},
-
-    {id:"emory", short:"EMO", name:"Emory University", loc:"Atlanta, GA", type:"private", kind:"NU",
-     admit:10.3, sat:[1480,1540], gpaBench:3.80, rd:"Jan 1", rdNote:"", early:"ED I · Nov 1",
-     majors:["bio","business","econ","psych","polisci","cs","math"],
-     values:["Ethical Leadership","Service","Intellectual Curiosity"],
+     mission:{ko:"‘누구에게나 어떤 공부든(Any person, any study)’. 7개 단과대의 폭과 Hotel School 같은 실용 학문이 특징입니다.",en:"“Any person, any study” — seven colleges, from arts and sciences to the School of Hotel Administration.",vi:"“Bất kỳ ai, bất kỳ ngành học nào” — bảy trường thành viên, từ khoa học cơ bản đến Quản trị khách sạn."},
+     tips:{ko:["배움을 실제 문제에 적용한 사례","관심 분야가 넓어진 이유와 연결"],en:["A case where you applied learning to a real problem","Why your interests broadened — and how they connect"],vi:["Trường hợp bạn áp dụng kiến thức vào vấn đề thực","Lý do mối quan tâm mở rộng và cách chúng kết nối"]}},
+    {id:"emory", short:"EMO", name:"Emory University", loc:"Atlanta, GA", type:"private", kind:"NU", admit:10.3,
+     sat:[1480,1540], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.80, rounds:[{k:"ED I",iso:"2026-11-01"},{k:"ED II",iso:"2027-01-01"},{k:"RD",iso:"2027-01-01"}], majors:["bio","business","econ","psych","polisci","cs","math","humanities","ai","biohealth","media","policy"], values:["Ethical Leadership","Service","Intellectual Curiosity"],
+     earn:93897, scoreId:139658,
      hook:{ko:"Goizueta · pre-med 파이프라인",en:"Goizueta Business School · pre-med pathway",vi:"Goizueta · lộ trình pre-med"},
-     mission:{
-       ko:"리버럴 아츠와 pre-professional을 함께. 윤리적 리더십과 의료·봉사 파이프라인이 강합니다.",
-       en:"Liberal arts plus pre-professional strength — ethical leadership and health/service pathways.",
-       vi:"Khai phóng kết hợp hướng nghề nghiệp — mạnh về lãnh đạo có đạo đức và lộ trình y tế/phục vụ."},
-     tips:{
-       ko:["돌봄·봉사에서 배운 것","윤리적 선택을 한 순간"],
-       en:["What you learned from caring for others","A moment you made an ethical choice"],
-       vi:["Điều bạn học từ việc chăm sóc người khác","Khoảnh khắc bạn đưa ra lựa chọn đạo đức"]}},
-
-    {id:"vanderbilt", short:"VAN", name:"Vanderbilt University", loc:"Nashville, TN", type:"private", kind:"NU",
-     admit:5.4, sat:[1510,1560], gpaBench:3.90, rd:"Jan 1", rdNote:"", early:"ED I·II 운영",
-     majors:["econ","bio","engineering","cs","edu","psych","polisci","math"],
-     values:["Growth","Community","Leadership"],
+     mission:{ko:"리버럴 아츠와 pre-professional을 함께. 윤리적 리더십과 의료·봉사 파이프라인이 강합니다.",en:"Liberal arts plus pre-professional strength — ethical leadership and health/service pathways.",vi:"Khai phóng kết hợp hướng nghề nghiệp — mạnh về lãnh đạo có đạo đức và lộ trình y tế/phục vụ."},
+     tips:{ko:["돌봄·봉사에서 배운 것","윤리적 선택을 한 순간"],en:["What you learned from caring for others","A moment you made an ethical choice"],vi:["Điều bạn học từ việc chăm sóc người khác","Khoảnh khắc bạn đưa ra lựa chọn đạo đức"]}},
+    {id:"vanderbilt", short:"VAN", name:"Vanderbilt University", loc:"Nashville, TN", type:"private", kind:"NU", admit:5.4,
+     sat:[1510,1560], satSplit:null, testFree:false, satSrc:"cds2526", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED I",iso:"2026-11-01"},{k:"ED II",iso:"2027-01-01"},{k:"RD",iso:"2027-01-01"}], majors:["econ","bio","engineering","cs","edu","psych","polisci","math","humanities","ai","biohealth","fintech","policy"], values:["Growth","Community","Leadership"],
+     earn:99080, scoreId:221999,
      hook:{ko:"Peabody 교육대학 · residential college",en:"Peabody College of education · residential colleges",vi:"Peabody College · residential college"},
-     mission:{
-       ko:"Residential college 공동체와 Peabody 교육대학. 성장 과정과 공동체 기여를 함께 봅니다.",
-       en:"Residential colleges and Peabody — growth over time and contribution to community.",
-       vi:"Cộng đồng residential college và Peabody — quan tâm quá trình trưởng thành và đóng góp cộng đồng."},
-     tips:{
-       ko:["시간에 따라 성장한 궤적","공동체를 위해 맡은 역할"],
-       en:["A trajectory of growth over time","The role you took on for a community"],
-       vi:["Hành trình trưởng thành theo thời gian","Vai trò bạn đảm nhận vì cộng đồng"]}},
-
-    {id:"pomona", short:"POM", name:"Pomona College", loc:"Claremont, CA", type:"private", kind:"LAC",
-     admit:7.1, sat:[1490,1550], gpaBench:3.90, rd:"Jan 8", rdNote:"", early:"ED I·II 운영",
-     majors:["econ","polisci","bio","math","enviro","psych","arts"],
-     values:["Mentorship","Breadth","Curiosity"],
+     mission:{ko:"Residential college 공동체와 Peabody 교육대학. 성장 과정과 공동체 기여를 함께 봅니다.",en:"Residential colleges and Peabody — growth over time and contribution to community.",vi:"Cộng đồng residential college và Peabody — quan tâm quá trình trưởng thành và đóng góp cộng đồng."},
+     tips:{ko:["시간에 따라 성장한 궤적","공동체를 위해 맡은 역할"],en:["A trajectory of growth over time","The role you took on for a community"],vi:["Hành trình trưởng thành theo thời gian","Vai trò bạn đảm nhận vì cộng đồng"]}},
+    {id:"pomona", short:"POM", name:"Pomona College", loc:"Claremont, CA", type:"private", kind:"LAC", admit:7.1,
+     sat:[1490,1550], satSplit:null, testFree:false, satSrc:"secondary", cohort:2025,
+     gpaBench:3.90, rounds:[{k:"ED I",iso:"2026-11-08"},{k:"ED II",iso:"2027-01-08"},{k:"RD",iso:"2027-01-08"}], majors:["econ","polisci","bio","math","enviro","psych","arts","humanities","ai","biohealth","climate","media","policy"], values:["Mentorship","Breadth","Curiosity"],
+     earn:84281, scoreId:121345,
      hook:{ko:"5C 컨소시엄 교차 수강",en:"5C consortium cross-registration",vi:"Học chéo trong liên minh 5C"},
-     mission:{
-       ko:"Claremont 5C 컨소시엄의 작은 리버럴 아츠. 멘토링과 학제 간 교차 수강, 깊은 탐구를 봅니다.",
-       en:"A small liberal arts college in the 5C consortium — mentorship, cross-registration and depth.",
-       vi:"Trường khai phóng nhỏ trong liên minh 5C — cố vấn, học chéo ngành và chiều sâu."},
-     tips:{
-       ko:["교수·멘토와 이어온 탐구","두 분야를 오가며 만든 질문"],
-       en:["Inquiry carried on with a teacher or mentor","A question formed between two fields"],
-       vi:["Quá trình nghiên cứu cùng giáo viên/cố vấn","Câu hỏi hình thành giữa hai lĩnh vực"]}}
+     mission:{ko:"Claremont 5C 컨소시엄의 작은 리버럴 아츠. 멘토링과 학제 간 교차 수강, 깊은 탐구를 봅니다.",en:"A small liberal arts college in the 5C consortium — mentorship, cross-registration and depth.",vi:"Trường khai phóng nhỏ trong liên minh 5C — cố vấn, học chéo ngành và chiều sâu."},
+     tips:{ko:["교수·멘토와 이어온 탐구","두 분야를 오가며 만든 질문"],en:["Inquiry carried on with a teacher or mentor","A question formed between two fields"],vi:["Quá trình nghiên cứu cùng giáo viên/cố vấn","Câu hỏi hình thành giữa hai lĩnh vực"]}}
   ];
-
-  var MAJORS = [
-    {id:"all"}, {id:"business"}, {id:"cs"}, {id:"engineering"}, {id:"bio"}, {id:"econ"},
-    {id:"polisci"}, {id:"psych"}, {id:"arts"}, {id:"math"}, {id:"enviro"}, {id:"edu"}, {id:"hospitality"}
-  ];
+  var MAJORS = ["all", "business", "cs", "engineering", "bio", "econ", "polisci", "psych", "arts", "math", "enviro", "edu", "hospitality", "humanities", "ai", "biohealth", "climate", "robotics", "fintech", "media", "policy"];
+  var CAREERS = {"business": {"occ": {"ko": "경영 분석가", "en": "Management analysts", "vi": "Chuyên viên phân tích quản lý"}, "occEn": "Management analysts", "pay": 101860}, "cs": {"occ": {"ko": "소프트웨어 개발자", "en": "Software developers", "vi": "Lập trình viên"}, "occEn": "Software developers", "pay": 135980}, "engineering": {"occ": {"ko": "기계공학자", "en": "Mechanical engineers", "vi": "Kỹ sư cơ khí"}, "occEn": "Mechanical engineers", "pay": 104110}, "bio": {"occ": {"ko": "의료과학자", "en": "Medical scientists", "vi": "Nhà khoa học y sinh"}, "occEn": "Medical scientists", "pay": 103410}, "econ": {"occ": {"ko": "경제학자", "en": "Economists", "vi": "Nhà kinh tế học"}, "occEn": "Economists", "pay": 124720}, "polisci": {"occ": {"ko": "정치학자", "en": "Political scientists", "vi": "Nhà khoa học chính trị"}, "occEn": "Political scientists", "pay": 142080}, "psych": {"occ": {"ko": "심리학자", "en": "Psychologists", "vi": "Nhà tâm lý học"}, "occEn": "Psychologists", "pay": 99110}, "arts": {"occ": {"ko": "그래픽 디자이너", "en": "Graphic designers", "vi": "Nhà thiết kế đồ họa"}, "occEn": "Graphic designers", "pay": 62960}, "math": {"occ": {"ko": "수학자·통계학자", "en": "Mathematicians and statisticians", "vi": "Nhà toán học & thống kê"}, "occEn": "Mathematicians and statisticians", "pay": 105720}, "enviro": {"occ": {"ko": "환경과학자", "en": "Environmental scientists", "vi": "Nhà khoa học môi trường"}, "occEn": "Environmental scientists and specialists", "pay": 82220}, "edu": {"occ": {"ko": "고등학교 교사", "en": "High school teachers", "vi": "Giáo viên trung học"}, "occEn": "High school teachers", "pay": 72040}, "hospitality": {"occ": {"ko": "행사 기획자", "en": "Event planners", "vi": "Chuyên viên tổ chức sự kiện"}, "occEn": "Meeting, convention, and event planners", "pay": 61160}, "humanities": {"occ": {"ko": "작가·저자", "en": "Writers and authors", "vi": "Nhà văn & tác giả"}, "occEn": "Writers and authors", "pay": 76910}, "ai": {"occ": {"ko": "데이터 과학자", "en": "Data scientists", "vi": "Nhà khoa học dữ liệu"}, "occEn": "Data scientists", "pay": 120230}, "biohealth": {"occ": {"ko": "의료과학자", "en": "Medical scientists", "vi": "Nhà khoa học y sinh"}, "occEn": "Medical scientists", "pay": 103410}, "climate": {"occ": {"ko": "환경과학자", "en": "Environmental scientists", "vi": "Nhà khoa học môi trường"}, "occEn": "Environmental scientists and specialists", "pay": 82220}, "robotics": {"occ": {"ko": "항공우주공학자", "en": "Aerospace engineers", "vi": "Kỹ sư hàng không vũ trụ"}, "occEn": "Aerospace engineers", "pay": 134960}, "fintech": {"occ": {"ko": "재무 분석가", "en": "Financial analysts", "vi": "Chuyên viên phân tích tài chính"}, "occEn": "Financial analysts", "pay": 103570}, "media": {"occ": {"ko": "시장조사 분석가", "en": "Market research analysts", "vi": "Chuyên viên nghiên cứu thị trường"}, "occEn": "Market research analysts", "pay": 78760}, "policy": {"occ": {"ko": "정치학자", "en": "Political scientists", "vi": "Nhà khoa học chính trị"}, "occEn": "Political scientists", "pay": 142080}};
 
   var PILLARS = [
     {id:"academics", w:25, color:"#1E40AF"},
@@ -536,186 +472,96 @@
     {id:"essay", w:12, color:"#F59E0B"},
     {id:"strategy", w:8, color:"#E11D48"}
   ];
-
-  var UI = {
-    ko:{
-      tagline:"미국 입시 파트너",
-      tab1:"대학 찾기", tab2:"인재상·에세이", tab3:"My Compass",
-      t1Eye:"SCHOOL FINDER", t1Title:"내 조건으로 대학 찾기",
-      t1Sub:"SAT·GPA·전공을 움직이면 15개 미국 대학의 참고 적합도가 바로 바뀝니다.",
-      sat:"SAT 점수", gpa:"내신 GPA", gpaUnit:"/ 4.0", major:"관심 전공",
-      allMajors:"전공 전체", all:"전체", reach:"도전", target:"적정", safety:"안전",
-      count:"{n}개 학교 표시", countAll:"15개 학교 전체",
-      pubRate:"공식 합격률", rd:"RD 마감", satBand:"SAT 25–75%",
-      testFree:"SAT/ACT 미반영 · UC Test-free", yourPos:"내 SAT", inBand:"구간 안", belowBand:"구간 아래", aboveBand:"구간 위",
-      fit:"참고 적합도", fitNote:"공식 구간 기반 참고용 추정치", estimate:"참고용 추정", cdsNote:"Common Data Set 최신판 기준",
-      empty:"조건에 맞는 학교가 없습니다. 전공을 ‘전공 전체’로 바꿔 보세요.",
-      disclaimer:"합격률·SAT 구간은 각 대학 Common Data Set 최신판(2024-25·2025-26)과 공식 입학 페이지에서 확인한 값이며, 적합도 %는 Vertex Education이 공개 구간을 기준으로 계산한 <b>참고용 추정치</b>입니다. 합격 가능성을 예측하거나 보장하지 않습니다.",
-      t2Eye:"FIT & ESSAYS", t2Title:"학교가 보는 인재상", t2School:"학교 선택", changeSchool:"다른 학교 보기",
-      pick:"대학을 선택하세요", pickHint:"1번 탭에서 학교 카드를 누르면 인재상과 에세이 방향이 열립니다.",
-      back:"← 대학 찾기로", mission:"미션·가치 요약", missionNote:"공식 미션·가치를 Vertex Education이 요약",
-      keywords:"에세이 키워드", tips:"에세이 방향", deadlines:"지원 일정", earlyRound:"Early round",
-      hook:"Vertex 메모", gpaBench:"참고 GPA", gpaBenchNote:"Vertex 참고 기준 · 공식 아님",
-      dlNote:"RD 마감은 Fall 2027 지원 기준입니다. ‘공식 확인’으로 표시된 일정은 각 대학 공식 페이지에서 다시 확인하세요.",
-      t3Eye:"MY COMPASS", t3Title:"종합 지수와 4년 로드맵",
-      t3Sub:"7개 지표를 움직이면 VCI와 지원 구간이 실시간으로 바뀝니다.",
-      vci:"Vertex Compass Index", outOf:"OUT OF 100", tierPrefix:"Tier",
-      tierNote:"VCI는 Vertex Education의 참고 지표이며 공식 대학 지표가 아닙니다.",
-      tierBands:["Top 10–25 참고 구간","Top 25–50 참고 구간","Top 50–80 참고 구간","기초를 쌓는 단계"],
-      pillars:"7대 핵심 지표", weight:"가중치", adviceTitle:"다음 우선순위",
-      advice:"가장 낮은 지표는 <b>{name}</b>입니다. 이번 학기에 여기에 시간을 먼저 배분해 보세요.",
-      adviceHigh:"7개 지표가 고르게 올라왔습니다. 이제 에세이와 지원 전략으로 마무리 단계입니다.",
-      roadmap:"G9–G12 4년 로드맵", programs:"Vertex Education 프로그램",
-      svhs:"SVHS 미국 학점 과정", svhsSub:"미국 고교 학점·GPA 보완",
-      sdg:"SDG Youth 임팩트 인증", sdgSub:"지역사회 프로젝트 · 인증서",
-      cta:"얼리버드 50% Waitlist 신청", ctaSub:"선착순 아님 · 학비는 상담 후 안내",
-      disc:"이 화면은 내부 검토용 v0.1 프로토타입입니다. 점수·지수·적합도는 모두 참고용이며, 실제 지원 결정은 공식 자료와 상담을 통해 확인하세요.",
-      footer:"내부 검토용 프로토타입 · 대외 배포 금지",
-      majors:{all:"전공 전체",business:"경영·비즈니스",cs:"컴퓨터과학",engineering:"공학",bio:"생명·Pre-Med",econ:"경제학",polisci:"정치·국제학",psych:"심리학",arts:"예술·디자인",math:"수학·물리",enviro:"환경·지속가능성",edu:"교육학",hospitality:"호텔·관광경영"},
-      pillarsLabel:{academics:["학업","SAT·GPA"],leadership:["리더십","활동·역할"],majorDepth:["전공 심화","수업·프로젝트"],research:["연구·프로젝트","탐구의 깊이"],impact:["SDG·지역사회","임팩트"],essay:["에세이 스토리","서사"],strategy:["지원 전략","일정·전형"]},
-      road:[
-        {t:"G9 · 기초 만들기", b:["GPA 습관과 과목 난이도 균형 잡기","활동 3~4개를 넓게 탐색","SAT 진단 테스트로 출발점 확인"]},
-        {t:"G10 · 방향 정하기", b:["AP/IB 또는 Honors 본격 진입","리더십 역할 1~2개 확보","PSAT 응시 · 관심 전공 좁히기"]},
-        {t:"G11 · 실적 만들기", b:["GPA 정점 구간 방어","SAT/ACT 목표 점수 마무리","연구·캡스톤 · 추천서 관계 만들기"]},
-        {t:"G12 · 지원 완성", b:["공통 에세이 + 학교별 에세이","ED/EA 11월 · RD 1월 마감 관리","재정 서류(CSS/FAFSA) 일정 체크"]}
-      ]
-    },
-    en:{
-      tagline:"US admissions partner",
-      tab1:"Find Schools", tab2:"Fit & Essays", tab3:"My Compass",
-      t1Eye:"SCHOOL FINDER", t1Title:"Find schools that fit you",
-      t1Sub:"Move SAT, GPA and major to see reference fit across 15 US universities and colleges.",
-      sat:"SAT score", gpa:"GPA", gpaUnit:"/ 4.0", major:"Intended major",
-      allMajors:"All majors", all:"All", reach:"Reach", target:"Target", safety:"Safety",
-      count:"{n} schools", countAll:"All 15 schools",
-      pubRate:"Admit rate", rd:"RD deadline", satBand:"SAT 25–75%",
-      testFree:"SAT/ACT not considered · UC test-free", yourPos:"Your SAT", inBand:"In band", belowBand:"Below band", aboveBand:"Above band",
-      fit:"Reference fit", fitNote:"Reference estimate from published bands", estimate:"estimate", cdsNote:"Based on the latest Common Data Sets",
-      empty:"No school matches these filters. Try setting the major to “All majors”.",
-      disclaimer:"Admit rates and SAT bands come from each college’s latest Common Data Set (2024-25 or 2025-26) and official admissions pages. The fit % is a <b>reference estimate</b> calculated by Vertex Education from published bands — it does not predict or guarantee admission.",
-      t2Eye:"FIT & ESSAYS", t2Title:"What each school looks for", t2School:"Choose a school", changeSchool:"Change school",
-      pick:"Pick a school", pickHint:"Tap a school card in tab 1 to open its values and essay direction.",
-      back:"← Back to schools", mission:"Mission & values", missionNote:"Official mission and values, summarized by Vertex Education",
-      keywords:"Essay keywords", tips:"Essay direction", deadlines:"Deadlines", earlyRound:"Early round",
-      hook:"Vertex note", gpaBench:"Reference GPA", gpaBenchNote:"Vertex reference, not official",
-      dlNote:"RD deadlines are for fall 2027 entry. Items marked “check official” should be confirmed on the college’s own page.",
-      t3Eye:"MY COMPASS", t3Title:"Composite index & 4-year plan",
-      t3Sub:"Move the seven pillars and your VCI and reference band update live.",
-      vci:"Vertex Compass Index", outOf:"OUT OF 100", tierPrefix:"Tier",
-      tierNote:"VCI is a Vertex Education reference index, not an official college metric.",
-      tierBands:["Reference band: Top 10–25","Reference band: Top 25–50","Reference band: Top 50–80","Foundation-building stage"],
-      pillars:"The seven pillars", weight:"weight", adviceTitle:"Next priority",
-      advice:"Your lowest pillar is <b>{name}</b>. Give it the first block of time this term.",
-      adviceHigh:"All seven pillars are moving up. Shift focus to essays and application strategy.",
-      roadmap:"G9–G12 roadmap", programs:"Vertex Education programs",
-      svhs:"SVHS US Credit Courses", svhsSub:"US high-school credits & GPA",
-      sdg:"SDG Youth Impact Certification", sdgSub:"Community project & certificate",
-      cta:"Join the Early-Bird 50% Waitlist", ctaSub:"Not first-come · tuition shared after consultation",
-      disc:"Internal review prototype v0.1. Scores, index and fit are all reference values; confirm real application decisions with official sources and a counselor.",
-      footer:"Internal prototype · not for public distribution",
-      majors:{all:"All majors",business:"Business",cs:"Computer Science",engineering:"Engineering",bio:"Biology & Pre-Med",econ:"Economics",polisci:"Political Science & IR",psych:"Psychology",arts:"Arts & Design",math:"Math & Physics",enviro:"Environmental Studies",edu:"Education",hospitality:"Hospitality Management"},
-      pillarsLabel:{academics:["Academics","SAT·GPA"],leadership:["Leadership","roles & impact"],majorDepth:["Major depth","courses & projects"],research:["Research","depth of inquiry"],impact:["SDG & community","impact"],essay:["Essay story","narrative"],strategy:["Strategy","timeline & rounds"]},
-      road:[
-        {t:"G9 · Build the base", b:["Build GPA habits and course rigor","Explore 3–4 activities broadly","Take a diagnostic SAT"]},
-        {t:"G10 · Choose a direction", b:["Enter AP/IB or Honors coursework","Take on 1–2 leadership roles","Take the PSAT and narrow your major"]},
-        {t:"G11 · Build the record", b:["Protect your peak GPA term","Finish SAT/ACT target scores","Research or capstone · build recommender relationships"]},
-        {t:"G12 · Finish applications", b:["Common App + school essays","Manage ED/EA November and RD January","Track CSS Profile / FAFSA"]}
-      ]
-    },
-    vi:{
-      tagline:"Đối tác tuyển sinh Mỹ",
-      tab1:"Tìm trường", tab2:"Phù hợp & Bài luận", tab3:"My Compass",
-      t1Eye:"SCHOOL FINDER", t1Title:"Tìm trường phù hợp với bạn",
-      t1Sub:"Điều chỉnh SAT, GPA và ngành để xem độ phù hợp tham khảo với 15 trường đại học Mỹ.",
-      sat:"Điểm SAT", gpa:"GPA", gpaUnit:"/ 4.0", major:"Ngành dự định",
-      allMajors:"Tất cả ngành", all:"Tất cả", reach:"Thử thách", target:"Vừa sức", safety:"An toàn",
-      count:"{n} trường", countAll:"Toàn bộ 15 trường",
-      pubRate:"Tỷ lệ trúng tuyển", rd:"Hạn RD", satBand:"SAT 25–75%",
-      testFree:"Không xét SAT/ACT · UC test-free", yourPos:"SAT của bạn", inBand:"Trong khoảng", belowBand:"Dưới khoảng", aboveBand:"Trên khoảng",
-      fit:"Độ phù hợp", fitNote:"Ước tính tham khảo theo khoảng điểm công bố", estimate:"tham khảo", cdsNote:"Theo Common Data Set mới nhất",
-      empty:"Không có trường nào khớp. Hãy chọn ngành “Tất cả ngành”.",
-      disclaimer:"Tỷ lệ trúng tuyển và khoảng SAT lấy từ Common Data Set mới nhất (2024-25 hoặc 2025-26) và trang tuyển sinh chính thức của từng trường. Chỉ số phù hợp % là <b>ước tính tham khảo</b> do Vertex Education tính từ khoảng điểm công bố — không dự báo hay bảo đảm kết quả.",
-      t2Eye:"FIT & ESSAYS", t2Title:"Nhà trường tìm kiếm điều gì", t2School:"Chọn trường", changeSchool:"Đổi trường",
-      pick:"Hãy chọn một trường", pickHint:"Nhấn vào thẻ trường ở tab 1 để xem giá trị và hướng viết bài luận.",
-      back:"← Về danh sách trường", mission:"Sứ mệnh & giá trị", missionNote:"Sứ mệnh, giá trị chính thức do Vertex Education tóm tắt",
-      keywords:"Từ khóa bài luận", tips:"Hướng viết bài luận", deadlines:"Hạn nộp", earlyRound:"Đợt sớm",
-      hook:"Ghi chú Vertex", gpaBench:"GPA tham khảo", gpaBenchNote:"Chuẩn tham khảo Vertex, không chính thức",
-      dlNote:"Hạn RD áp dụng cho kỳ nhập học Fall 2027. Mục ghi “kiểm tra chính thức” cần xác nhận lại trên trang của trường.",
-      t3Eye:"MY COMPASS", t3Title:"Chỉ số tổng hợp & lộ trình 4 năm",
-      t3Sub:"Điều chỉnh 7 chỉ số để VCI và nhóm tham chiếu cập nhật ngay.",
-      vci:"Vertex Compass Index", outOf:"OUT OF 100", tierPrefix:"Tier",
-      tierNote:"VCI là chỉ số tham khảo của Vertex Education, không phải chỉ số chính thức của trường.",
-      tierBands:["Nhóm tham chiếu Top 10–25","Nhóm tham chiếu Top 25–50","Nhóm tham chiếu Top 50–80","Giai đoạn xây nền"],
-      pillars:"Bảy chỉ số cốt lõi", weight:"trọng số", adviceTitle:"Ưu tiên tiếp theo",
-      advice:"Chỉ số thấp nhất là <b>{name}</b>. Hãy dành thời gian đầu tiên cho chỉ số này trong học kỳ.",
-      adviceHigh:"Cả bảy chỉ số đều đang tăng. Hãy chuyển sang bài luận và chiến lược nộp đơn.",
-      roadmap:"Lộ trình G9–G12", programs:"Chương trình Vertex Education",
-      svhs:"Khóa học tín chỉ Mỹ SVHS", svhsSub:"Tín chỉ & GPA trung học Mỹ",
-      sdg:"Chứng nhận tác động SDG Youth", sdgSub:"Dự án cộng đồng & chứng nhận",
-      cta:"Đăng ký danh sách chờ Early-Bird 50%", ctaSub:"Không phải ai đến trước · học phí tư vấn riêng",
-      disc:"Bản thử nghiệm v0.1 cho kiểm tra nội bộ. Điểm số, chỉ số và độ phù hợp đều là giá trị tham khảo; hãy xác nhận quyết định nộp đơn bằng nguồn chính thức và tư vấn.",
-      footer:"Bản thử nghiệm nội bộ · không phát hành ra ngoài",
-      majors:{all:"Tất cả ngành",business:"Kinh doanh",cs:"Khoa học máy tính",engineering:"Kỹ thuật",bio:"Sinh học & Y khoa",econ:"Kinh tế",polisci:"Chính trị & QHQT",psych:"Tâm lý học",arts:"Nghệ thuật & Thiết kế",math:"Toán & Vật lý",enviro:"Môi trường & Bền vững",edu:"Giáo dục",hospitality:"Quản lý khách sạn"},
-      pillarsLabel:{academics:["Học thuật","SAT·GPA"],leadership:["Lãnh đạo","vai trò"],majorDepth:["Chiều sâu ngành","môn học & dự án"],research:["Nghiên cứu","độ sâu tìm tòi"],impact:["SDG & cộng đồng","tác động"],essay:["Bài luận","câu chuyện"],strategy:["Chiến lược","thời gian & đợt"]},
-      road:[
-        {t:"G9 · Xây nền", b:["Hình thành thói quen GPA và cân bằng độ khó","Khám phá 3–4 hoạt động","Thi thử SAT để biết điểm xuất phát"]},
-        {t:"G10 · Định hướng", b:["Vào AP/IB hoặc Honors","Đảm nhận 1–2 vai trò lãnh đạo","Thi PSAT và thu hẹp ngành"]},
-        {t:"G11 · Tạo thành tích", b:["Giữ GPA ở mức cao nhất","Hoàn thành mục tiêu SAT/ACT","Nghiên cứu/capstone · xây quan hệ với người giới thiệu"]},
-        {t:"G12 · Hoàn tất hồ sơ", b:["Common App + bài luận riêng","Quản lý ED/EA tháng 11, RD tháng 1","Theo dõi CSS Profile / FAFSA"]}
-      ]
-    }
-  };
-
-  var WAITLIST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfWiXIuFeEYhdXnIjPHu0C5m_Cfawe1t_3mSw5fj70PiocxzA/viewform";
-  var SITE_URL = "https://vertex.org.vn";
-
-  var state = {
-    lang:"ko", tab:1, sat:1500, gpa:3.80, major:"all", filter:"all", school:"mit",
+  var STORAGE_KEY = "vc_mvp_v011";
+  var FILTERS = ["all","above","within","below","testfree","sections"];
+  var DEFAULTS = {
+    lang:"ko", tab:1, sat:1500, gpa:3.8, major:"all", filter:"all", school:"mit",
     pillars:{academics:70, leadership:55, majorDepth:60, research:45, impact:50, essay:55, strategy:40}
   };
+  var state = JSON.parse(JSON.stringify(DEFAULTS));
+  var flash = "";
 
-  function t(k){ var d=UI[state.lang]; return (d && d[k]!==undefined) ? d[k] : UI.en[k]; }
+  function t(k){ var d=UI[state.lang]||UI.en; return (d && d[k]!==undefined) ? d[k] : UI.en[k]; }
   function L(obj){ return obj ? (obj[state.lang] || obj.en || obj.ko) : ""; }
   function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
   function school(id){ for(var i=0;i<SCHOOLS.length;i++){ if(SCHOOLS[i].id===id) return SCHOOLS[i]; } return null; }
   function clamp(n,a,b){ return Math.max(a,Math.min(b,n)); }
 
-  function satNorm(s){
-    if(!s.sat) return null;
-    var lo=s.sat[0]-90, hi=s.sat[1]+70;
-    return clamp((state.sat-lo)/(hi-lo),0,1);
+  function moneyK(n){ return "$"+(n/1000).toFixed(1)+"k"; }
+  function money(n){ return "$"+n.toLocaleString("en-US"); }
+  var MONTH_EN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function dateParts(iso){ var p=iso.split("-"); return {y:+p[0], m:+p[1], d:+p[2]}; }
+  function fmtDate(iso){
+    var p=dateParts(iso);
+    if(state.lang==="ko") return p.y+"년 "+p.m+"월 "+p.d+"일";
+    if(state.lang==="vi") return p.d+"/"+p.m+"/"+p.y;
+    return MONTH_EN[p.m-1]+" "+p.d+", "+p.y;
   }
-  function gpaNorm(s){
-    var lo=s.gpaBench-0.45, hi=s.gpaBench+0.25;
-    return clamp((state.gpa-lo)/(hi-lo),0,1);
+  function fmtDateShort(iso){
+    var p=dateParts(iso);
+    if(state.lang==="ko") return p.y+"."+p.m+"."+p.d;
+    if(state.lang==="vi") return p.d+"/"+p.m+"/"+p.y;
+    return MONTH_EN[p.m-1]+" "+p.d+", "+p.y;
   }
-  function acadIndex(s){
-    var sn=satNorm(s), gn=gpaNorm(s);
-    return sn===null ? gn : (0.6*sn + 0.4*gn);
+  function daysTo(iso){
+    var end=new Date(iso+"T23:59:59").getTime();
+    if(isNaN(end)) return null;
+    return Math.ceil((end-Date.now())/86400000);
   }
-  function fitPct(s){
-    var a=acadIndex(s);
-    return Math.min(0.92, (s.admit/100) * (0.35 + 2.2*a));
+  function statusPill(iso, compact){
+    var d=daysTo(iso); if(d===null) return "";
+    if(d<0) return '<span class="pill closed">'+esc(t("closed"))+'</span>';
+    if(d<=21) return '<span class="pill soon">D-'+d+'</span>';
+    if(compact) return "";
+    if(d<=75) return '<span class="pill open">D-'+d+'</span>';
+    return "";
   }
-  function cls(fit){ return fit>=0.55 ? "safety" : (fit>=0.18 ? "target" : "reach"); }
-  function badgeLabel(c){ return c==="safety"?t("safety"):(c==="target"?t("target"):t("reach")); }
-  function fmtPct(x){ return (x<10? x.toFixed(1) : String(Math.round(x))) + "%"; }
+
+  /* ---------- academic band ---------- */
+  function bandKey(s){
+    if(s.satSplit) return "sections";
+    if(s.testFree || !s.sat) return "testfree";
+    if(state.sat>=s.sat[1]) return "above";
+    if(state.sat>=s.sat[0]) return "within";
+    return "below";
+  }
+  function bandLabel(k){
+    if(k==="above") return t("above");
+    if(k==="within") return t("within");
+    if(k==="below") return t("below");
+    if(k==="sections") return t("sections");
+    return t("testfree");
+  }
+  function bandPill(k){ return '<span class="bandpill '+k+'">'+esc(bandLabel(k))+'</span>'; }
+
+  function academicText(s){
+    if(s.testFree) return t("testFree");
+    if(s.satSplit) return t("satSplitShort");
+    return "SAT "+s.sat[0]+"–"+s.sat[1];
+  }
 
   function visibleSchools(){
     var arr = SCHOOLS.slice();
     if(state.major!=="all"){ arr = arr.filter(function(s){ return s.majors.indexOf(state.major)>-1; }); }
-    if(state.filter!=="all"){ arr = arr.filter(function(s){ return cls(fitPct(s))===state.filter; }); }
+    if(state.filter!=="all"){ arr = arr.filter(function(s){ return bandKey(s)===state.filter; }); }
     return arr;
   }
   function counts(){
     var base = state.major==="all" ? SCHOOLS : SCHOOLS.filter(function(s){ return s.majors.indexOf(state.major)>-1; });
-    var c={all:base.length, reach:0, target:0, safety:0};
-    base.forEach(function(s){ c[cls(fitPct(s))]++; });
+    var c={all:base.length, above:0, within:0, below:0, testfree:0, sections:0};
+    base.forEach(function(s){ c[bandKey(s)]++; });
     return c;
   }
 
-  function satBarHtml(s){
-    if(!s.sat){ return '<span class="tf">'+esc(t("testFree"))+'</span>'; }
+  function satBlockHtml(s){
+    if(s.testFree){ return '<span class="tf">'+esc(t("testFree"))+'</span>'; }
+    if(s.satSplit){
+      return '<span class="sat-split">'+
+        '<span class="sat-top"><span>'+esc(t("satSplitEbrw"))+'</span><b>'+s.satSplit.ebrw[0]+'–'+s.satSplit.ebrw[1]+'</b></span>'+
+        '<span class="sat-top" style="margin-top:3px"><span>'+esc(t("satSplitMath"))+'</span><b>'+s.satSplit.math[0]+'–'+s.satSplit.math[1]+'</b></span>'+
+        '<span style="display:block;margin-top:4px">'+esc(t("satSplitNote"))+'</span>'+
+      '</span>';
+    }
     var lo=s.sat[0], hi=s.sat[1], min=lo-160, max=hi+160;
     function p(x){ return clamp((x-min)/(max-min)*100,0,100); }
     var inBand = state.sat>=lo && state.sat<=hi;
@@ -730,19 +576,24 @@
       '</span>';
   }
 
+  function rdOf(s){
+    for(var i=s.rounds.length-1;i>=0;i--){ if(s.rounds[i].k==="RD") return s.rounds[i]; }
+    return s.rounds[s.rounds.length-1];
+  }
+
   function cardHtml(s){
-    var fit=fitPct(s), c=cls(fit);
-    var typeLabel = (s.type==="private"?"Private":"Public")+" · "+(s.kind==="LAC"?"Liberal Arts":"National");
+    var k=bandKey(s), typeLabel = (s.type==="private"?t("privateType"):t("publicType"))+" · "+(s.kind==="LAC"?t("lacType"):t("natType"));
+    var rd=rdOf(s);
     return ''+
       '<button type="button" class="school" data-act="school" data-id="'+s.id+'" aria-label="'+esc(s.name)+'">'+
         '<span class="s-top">'+
-          '<span class="s-name">'+esc(s.name)+'<span class="s-loc">'+esc(s.loc)+' · '+typeLabel+'</span></span>'+
-          '<span class="badge '+c+'">'+esc(badgeLabel(c))+'</span>'+
+          '<span class="s-name">'+esc(s.name)+'<span class="s-loc">'+esc(s.loc)+' · '+esc(typeLabel)+'</span></span>'+
+          bandPill(k)+
         '</span>'+
-        '<span class="s-stats"><span>'+esc(t("pubRate"))+' <b>'+fmtPct(s.admit)+'</b></span>'+
-          '<span>'+esc(t("rd"))+' <b>'+esc(s.rd)+'</b></span></span>'+
-        satBarHtml(s)+
-        '<span class="s-fit"><span>'+esc(t("fit"))+'</span><b>≈ '+Math.round(fit*100)+'%</b><i>'+esc(t("fitNote"))+'</i></span>'+
+        '<span class="s-stats"><span>'+esc(t("pubRate"))+' <b>'+(s.admit<15?s.admit.toFixed(1):Math.round(s.admit))+'%</b></span>'+
+          '<span>'+(rd.k==="UC"?esc(t("ucRound")):"RD")+' <b>'+esc(fmtDateShort(rd.iso))+'</b></span>'+statusPill(rd.iso,true)+'</span>'+
+        satBlockHtml(s)+
+        '<span class="s-earn"><span>'+esc(t("earnBadge"))+'</span><b>'+moneyK(s.earn)+'</b><i>College Scorecard</i></span>'+
       '</button>';
   }
 
@@ -756,32 +607,32 @@
 
   function countHtml(){
     var n=visibleSchools().length;
-    return n===15 ? t("countAll") : t("count").replace("{n}", String(n));
+    return n===SCHOOLS.length ? t("countAll") : t("count").replace("{n}", String(n));
   }
 
   function majorOptions(){
     var labels=t("majors");
     return MAJORS.map(function(m){
-      return '<option value="'+m.id+'"'+(state.major===m.id?' selected':'')+'>'+esc(labels[m.id])+'</option>';
+      return '<option value="'+m+'"'+(state.major===m?' selected':'')+'>'+esc(labels[m])+'</option>';
     }).join("");
   }
 
   function chipsHtml(){
-    var c=counts(), defs=[["all",t("all")],["reach",t("reach")],["target",t("target")],["safety",t("safety")]];
-    return defs.map(function(d){
-      var on = state.filter===d[0] ? " on" : "";
-      return '<button type="button" class="chip'+on+'" data-act="filter" data-filter="'+d[0]+'">'+esc(d[1])+
-        '<span class="n">'+c[d[0]]+'</span></button>';
+    var c=counts();
+    return FILTERS.map(function(f){
+      var on = state.filter===f ? " on" : "";
+      var label = f==="all" ? t("all") : bandLabel(f);
+      return '<button type="button" class="chip'+on+'" data-act="filter" data-filter="'+f+'">'+esc(label)+
+        '<span class="n">'+c[f]+'</span></button>';
     }).join("");
   }
 
   function tab1Html(){
-    var satPos=Math.round((state.sat-800)/8);
-    var gpaPos=Math.round((state.gpa-2.5)/1.5*100);
     return ''+
       '<div class="eyebrow">'+esc(t("t1Eye"))+'</div>'+
       '<h1>'+esc(t("t1Title"))+'</h1>'+
       '<p class="sub">'+esc(t("t1Sub"))+'</p>'+
+      '<div class="review-bar"><b>'+esc(t("reviewChip"))+'</b><span>'+esc(t("reviewBar"))+'</span></div>'+
 
       '<div class="card filter-card">'+
         '<div class="field">'+
@@ -797,15 +648,50 @@
         '<div class="field">'+
           '<div class="field-head"><label for="majorSel">'+esc(t("major"))+'</label></div>'+
           '<select id="majorSel" data-select="major" aria-label="'+esc(t("major"))+'">'+majorOptions()+'</select>'+
+          '<p class="field-note">'+esc(t("majorsNote"))+'</p>'+
         '</div>'+
       '</div>'+
 
       '<div class="chips" id="chips">'+chipsHtml()+'</div>'+
-      '<div class="list-head"><span id="count">'+esc(countHtml())+'</span><span>'+esc(t("cdsNote"))+'</span></div>'+
+      '<div class="list-head"><span id="count">'+esc(countHtml())+'</span><small>'+esc(t("cdsNote"))+'</small></div>'+
       '<div id="schoolList">'+listHtml()+'</div>'+
 
-      '<p class="disc">'+t("disclaimer")+'</p>'+
+      '<p class="disc">'+t("bandNote")+'</p>'+
+      (flash?'<p class="flash">'+esc(flash)+'</p>':'')+
+      '<div class="storage"><p>'+esc(t("storageNote"))+'</p><button type="button" class="reset" data-act="reset">'+esc(t("reset"))+'</button></div>'+
       footerHtml();
+  }
+
+  function srcLabel(s){
+    if(s.satSrc==="cds2425") return t("srcCds2425");
+    if(s.satSrc==="secondary") return t("srcSecondary");
+    return t("srcCds2526");
+  }
+  function cohortLabel(y){ return t("cohortFall").replace("{y}", String(y)); }
+
+  function srcRows(s){
+    var rows=[
+      [t("pubRate"), t("srcAdmit")+" · "+cohortLabel(2025)],
+      ["SAT", srcLabel(s)+" · "+cohortLabel(s.cohort||2025)+" · "+t("chkShort")],
+      [t("deadlines"), t("deadlineSrc")+" · "+t("checked")],
+      [t("earnSrcLabel"), t("earnSrc")]
+    ];
+    return '<table class="srcs"><tbody>'+rows.map(function(r){
+      return '<tr><th>'+esc(r[0])+'</th><td>'+esc(r[1])+'</td></tr>';
+    }).join("")+'</tbody></table>';
+  }
+
+  function careersFor(s){
+    var primary = (state.major!=="all" && s.majors.indexOf(state.major)>-1) ? state.major : s.majors[0];
+    var order=[primary].concat(s.majors.filter(function(m){ return m!==primary; }));
+    var out=[], seen={};
+    for(var i=0;i<order.length && out.length<3;i++){
+      var c=CAREERS[order[i]]; if(!c) continue;
+      if(seen[c.occEn]) continue;
+      seen[c.occEn]=1;
+      out.push({major:order[i], c:c});
+    }
+    return out;
   }
 
   function tab2Html(){
@@ -822,50 +708,89 @@
         '<div class="sect">'+esc(t("t2School"))+'</div>'+picker+footerHtml();
     }
 
-    var fit=fitPct(s), c=cls(fit);
-    var typeLabel=(s.type==="private"?"Private":"Public")+" · "+(s.kind==="LAC"?"Liberal Arts":"National");
+    var k=bandKey(s);
+    var typeLabel=(s.type==="private"?t("privateType"):t("publicType"))+" · "+(s.kind==="LAC"?t("lacType"):t("natType"));
     var initials=s.short || s.name.replace(/[^A-Z]/g,"").slice(0,2);
-    var satTxt = s.sat ? (s.sat[0]+"–"+s.sat[1]) : t("testFree");
+    var labels=t("majors");
     var tips=L(s.tips)||[];
     var vals=s.values||[];
+    var rd=rdOf(s);
+
+    var cmpLine = s.testFree
+      ? t("cmpTestFree")
+      : (s.satSplit
+          ? t("cmpSections").replace("{ebrw}", s.satSplit.ebrw[0]+"–"+s.satSplit.ebrw[1]).replace("{math}", s.satSplit.math[0]+"–"+s.satSplit.math[1])
+          : t("cmpLine").replace("{sat}", String(state.sat)).replace("{lo}", String(s.sat[0])).replace("{hi}", String(s.sat[1])));
+
+    var rows = s.rounds.map(function(r){
+      return '<tr><th>'+esc(r.k==="UC"?t("ucRound"):r.k)+'</th><td>'+esc(fmtDate(r.iso))+
+        ' <small>'+(r.k==="UC"?esc(t("ucWindow")):esc(t("cycle")))+'</small>'+statusPill(r.iso)+'</td></tr>';
+    }).join("");
+
+    var careers=careersFor(s);
 
     return ''+
       '<button type="button" class="back" data-act="tab" data-tab="1">'+esc(t("back"))+'</button>'+
       '<div class="detail-head">'+
-        '<div class="dh-top"><div class="crest" aria-hidden="true" style="font-size:'+(initials.length>2?'11.5px':'14px')+'">'+esc(initials)+'</div>'+
+        '<div class="dh-top"><div class="crest" aria-hidden="true" style="font-size:'+(initials.length>2?'11.5px':'14px')+'" id="crest">'+esc(initials)+'</div>'+
           '<div style="flex:1;min-width:0"><div class="dh-name">'+esc(s.name)+'</div>'+
-          '<div class="dh-meta">'+esc(s.loc)+' · '+typeLabel+'</div></div>'+
-          '<span class="badge '+c+'">'+esc(badgeLabel(c))+'</span></div>'+
+          '<div class="dh-meta">'+esc(s.loc)+' · '+esc(typeLabel)+'</div></div>'+
+          bandPill(k)+'</div>'+
         '<dl class="stats3">'+
-          '<div class="stat"><dt>'+esc(t("pubRate"))+'</dt><dd>'+fmtPct(s.admit)+'</dd></div>'+
-          '<div class="stat"><dt>SAT 25–75</dt><dd style="font-size:11.5px">'+esc(satTxt)+'</dd></div>'+
-          '<div class="stat"><dt>'+esc(t("rd"))+'</dt><dd>'+esc(s.rd)+(s.rdNote?'<em> '+esc(s.rdNote)+'</em>':'')+'</dd></div>'+
+          '<div class="stat"><dt>'+esc(t("pubRate"))+'</dt><dd>'+(s.admit<15?s.admit.toFixed(1):Math.round(s.admit))+'%</dd></div>'+
+          '<div class="stat"><dt>SAT 25–75</dt><dd style="font-size:10.5px">'+esc(academicText(s))+'</dd></div>'+
+          '<div class="stat"><dt>RD</dt><dd style="font-size:10.5px">'+esc(fmtDateShort(rd.iso))+'</dd></div>'+
         '</dl>'+
-        '<div style="margin-top:10px">'+picker.replace('id="schoolSel"','id="schoolSel"')+'</div>'+
+        '<div style="margin-top:10px">'+picker+'</div>'+
       '</div>'+
 
-      '<div class="sect">'+esc(t("mission"))+'</div>'+
+      '<div class="sect">'+esc(t("band"))+'</div>'+
+      '<div class="card pad">'+
+        '<div class="cmp">'+bandPill(k)+'<span class="cmp-line">'+cmpLine+'</span></div>'+
+        '<p class="note">'+t("bandNote")+'</p>'+
+        (s.satSplit?'<p class="note">'+esc(t("bandSectionsNote"))+'</p>':'')+
+      '</div>'+
+
+      '<div class="sect">'+esc(t("sources"))+'<span class="tag-mini">'+esc(t("checked"))+'</span></div>'+
+      '<div class="card pad">'+srcRows(s)+'</div>'+
+
+      '<div class="sect">'+esc(t("mission"))+'<span class="tag-mini warn">'+esc(t("interp"))+'</span></div>'+
       '<div class="card pad"><p class="mission">'+esc(L(s.mission))+'</p>'+
         '<p class="note">'+esc(t("missionNote"))+'</p></div>'+
 
-      '<div class="sect">'+esc(t("keywords"))+'</div>'+
+      '<div class="sect">'+esc(t("keywords"))+'<span class="tag-mini warn">'+esc(t("interp"))+'</span></div>'+
       '<div class="tags">'+vals.map(function(v){ return '<span class="tag">'+esc(v)+'</span>'; }).join("")+'</div>'+
+      '<p class="note">'+esc(t("keywordsNote"))+'</p>'+
 
       '<div class="sect">'+esc(t("tips"))+'</div>'+
       '<div class="card pad"><ul class="tips">'+tips.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join("")+'</ul></div>'+
 
-      '<div class="sect">'+esc(t("deadlines"))+'</div>'+
-      '<div class="card pad"><table class="dl"><tbody>'+
-        '<tr><th>'+esc(t("earlyRound"))+'</th><td>'+esc(s.early)+'</td></tr>'+
-        '<tr><th>Regular Decision</th><td>'+esc(s.rd)+(s.rdNote?'<small>'+esc(s.rdNote)+'</small>':'')+'</td></tr>'+
+      '<div class="sect">'+esc(t("deadlines"))+'<span class="tag-mini">'+esc(t("cycle"))+'</span></div>'+
+      '<div class="card pad"><table class="dl"><tbody>'+rows+
         '<tr><th>'+esc(t("gpaBench"))+'</th><td>'+s.gpaBench.toFixed(2)+'<small>'+esc(t("gpaBenchNote"))+'</small></td></tr>'+
       '</tbody></table></div>'+
       '<p class="note">'+esc(t("dlNote"))+'</p>'+
 
+      '<div class="sect">'+esc(t("earnTitle"))+'<span class="tag-mini">College Scorecard + BLS</span></div>'+
+      '<div class="earn-card">'+
+        '<div class="earn-big"><strong>'+moneyK(s.earn)+'</strong><small>'+esc(t("earnInst"))+'<br>'+esc(t("earnInstNote"))+'</small></div>'+
+        '<p class="earn-sub">'+esc(t("earnLine")).replace("{full}", money(s.earn))+' · Scorecard ID '+s.scoreId+' · '+esc(t("earnPull"))+'</p>'+
+        '<div class="career">'+
+          '<div class="career-row" style="padding:0 0 3px"><span class="cmaj" style="color:var(--ink2);font-weight:850">'+esc(t("careerTitle"))+'</span><span class="cjob"></span><span class="cpay" style="font-size:9.5px;color:var(--muted2)">'+esc(t("blsPay"))+'</span></div>'+
+          careers.map(function(x){
+            return '<div class="career-row"><span class="cmaj">'+esc(labels[x.major])+'</span>'+
+              '<span class="cjob">'+esc(L(x.c.occ))+'</span>'+
+              '<span class="cpay">'+moneyK(x.c.pay)+'</span></div>';
+          }).join("")+
+        '</div>'+
+        '<p class="note">'+esc(t("careerNote"))+'</p>'+
+        '<p class="note">'+esc(t("earnDisc"))+'</p>'+
+      '</div>'+
+
       '<div class="sect">'+esc(t("hook"))+'</div>'+
       '<div class="hook"><b>'+esc(s.short||s.name)+'</b><span>'+esc(L(s.hook))+'</span></div>'+
 
-      '<p class="disc">'+t("disclaimer")+'</p>'+
+      '<p class="disc">'+t("disc")+'</p>'+
       footerHtml();
   }
 
@@ -901,7 +826,7 @@
   function gaugeBlockHtml(){
     var v=vci(), tier=tierOf(v), col=TIER_COLORS[tier], bg=TIER_BG[tier];
     return ''+
-      '<div class="vci-title">Vertex Compass Index</div>'+
+      '<div class="vci-title">'+esc(t("vci"))+'</div>'+
       '<div class="gauge-wrap">'+gaugeSvg()+
         '<div class="gauge-center"><div class="vci-num" id="vciNum">'+v+'</div>'+
         '<div class="vci-cap">'+esc(t("outOf"))+'</div></div>'+
@@ -930,11 +855,13 @@
     return '<div class="advice"><span class="ico">!</span><p>'+t("advice").replace("{name}", esc((labels[low.id]||[low.id])[0]))+'</p></div>';
   }
 
+  function roadTitle(s){ var i=s.indexOf("·"); return i>-1 ? s.slice(i+1).trim() : s; }
+
   function roadmapHtml(){
     var road=t("road");
     return road.map(function(r,i){
       var open = i===0 ? " open" : "";
-      return '<details class="road"'+open+'><summary><span class="gy">G'+(9+i)+'</span><span>'+esc(r.t.replace(/^G\d+\s·\s/,""))+'</span><span class="caret">›</span></summary>'+
+      return '<details class="road"'+open+'><summary><span class="gy">G'+(9+i)+'</span><span>'+esc(roadTitle(r.t))+'</span><span class="caret">›</span></summary>'+ 
         '<div class="r-body"><ul>'+r.b.map(function(b){ return '<li>'+esc(b)+'</li>'; }).join("")+'</ul></div></details>';
     }).join("");
   }
@@ -947,8 +874,8 @@
 
       '<div class="gauge-card" id="gaugeCard">'+gaugeBlockHtml()+'</div>'+
 
-      '<div class="card pad" style="margin-bottom:12px">'+
-        '<h2 style="margin-bottom:11px">'+esc(t("pillars"))+'</h2>'+
+      '<div class="card pad" style="margin-bottom:11px">'+
+        '<h2 style="margin-bottom:10px">'+esc(t("pillars"))+'</h2>'+
         '<div id="pillarList">'+pillarsHtml()+'</div>'+
         '<div id="adviceWrap">'+adviceHtml()+'</div>'+
       '</div>'+
@@ -956,21 +883,24 @@
       '<div class="sect">'+esc(t("roadmap"))+'</div>'+
       roadmapHtml()+
 
-      '<div class="sect">'+esc(t("programs"))+'</div>'+
-      '<a class="prog" href="'+SITE_URL+'" target="_blank" rel="noopener">'+
-        '<span class="pico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h7v13H4z"/><path d="M13 6h7v13h-7z"/><path d="M7.5 9.5h1M7.5 12.5h1M16.5 9.5h1"/></svg></span>'+
-        '<span><b>'+esc(t("svhs"))+'</b><small>'+esc(t("svhsSub"))+'</small></span><span class="arrow">›</span></a>'+
-      '<a class="prog" href="'+SITE_URL+'" target="_blank" rel="noopener">'+
-        '<span class="pico b" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="m8.6 12.2 2.3 2.3 4.5-4.9"/></svg></span>'+
-        '<span><b>'+esc(t("sdg"))+'</b><small>'+esc(t("sdgSub"))+'</small></span><span class="arrow">›</span></a>'+
+      '<div class="sect">'+esc(t("programs"))+'<span class="tag-mini warn">'+esc(t("reviewChip"))+'</span></div>'+
+      '<div class="prog disabled" role="note" aria-disabled="true">'+
+        '<span class="pico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h7v13H4z"/><path d="M13 6h7v13h-7z"/><path d="M7.5 9.5h1M7.5 12.5h1M16.5 9.5h1"/></svg></span>'+
+        '<span><b>'+esc(t("svhs"))+'</b><small>'+esc(t("progDisabled"))+'</small></span><span class="arrow">🔒</span></div>'+
+      '<div class="prog disabled" role="note" aria-disabled="true">'+
+        '<span class="pico b" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="m8.6 12.2 2.3 2.3 4.5-4.9"/></svg></span>'+
+        '<span><b>'+esc(t("sdg"))+'</b><small>'+esc(t("progDisabled"))+'</small></span><span class="arrow">🔒</span></div>'+
 
-      '<a class="cta" href="'+WAITLIST_URL+'" target="_blank" rel="noopener">'+esc(t("cta"))+'<small>'+esc(t("ctaSub"))+'</small></a>'+
-      '<p class="disc">'+esc(t("disc"))+'</p>'+
+      '<div class="cta disabled" role="note" aria-disabled="true">'+esc(t("ctaDisabled"))+'<small>'+esc(t("ctaSub"))+'</small>'+
+        '<span class="en-label">Review Build · Waitlist / Programme links disabled pending final approval</span></div>'+
+      '<p class="disc">'+t("disc")+'</p>'+
+      (flash?'<p class="flash">'+esc(flash)+'</p>':'')+
+      '<div class="storage"><p>'+esc(t("storageNote"))+'</p><button type="button" class="reset" data-act="reset">'+esc(t("reset"))+'</button></div>'+
       footerHtml();
   }
 
   function footerHtml(){
-    return '<footer><span><b>Vertex Compass</b> v0.1</span><span>'+esc(t("footer"))+'<br>© 2026 Vertex Education</span></footer>';
+    return '<footer><span><b>Vertex Compass</b> v0.1.1 · '+esc(t("reviewChip"))+'</span><span>'+esc(t("footer"))+'<br>© 2026 Vertex Education</span></footer>';
   }
 
   /* ---------- render ---------- */
@@ -1000,11 +930,34 @@
       b.setAttribute("aria-selected", on?"true":"false");
     });
     document.getElementById("scroll").scrollTop = scrollMem[state.tab] || 0;
+    flash="";
     save();
   }
 
   function save(){
-    try{ localStorage.setItem("vc_mvp_v01", JSON.stringify(state)); }catch(e){}
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  function restore(){
+    state = JSON.parse(JSON.stringify(DEFAULTS));
+    var raw=null;
+    try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){ return; }
+    if(!raw) return;
+    var s=null;
+    try{ s=JSON.parse(raw); }catch(e){ return; }
+    if(!s || typeof s!=="object") return;
+    if(["ko","en","vi"].indexOf(s.lang)>-1) state.lang=s.lang;
+    if(typeof s.sat==="number" && isFinite(s.sat)) state.sat=clamp(Math.round(s.sat/10)*10,800,1600);
+    if(typeof s.gpa==="number" && isFinite(s.gpa)) state.gpa=clamp(s.gpa,2.5,4);
+    if(typeof s.major==="string" && (s.major==="all" || MAJORS.indexOf(s.major)>-1)) state.major=s.major;
+    if(FILTERS.indexOf(s.filter)>-1) state.filter=s.filter;
+    if(typeof s.school==="string" && school(s.school)) state.school=s.school;
+    if(s.pillars && typeof s.pillars==="object"){
+      PILLARS.forEach(function(p){
+        if(typeof s.pillars[p.id]==="number" && isFinite(s.pillars[p.id])) state.pillars[p.id]=clamp(Math.round(s.pillars[p.id]),0,100);
+      });
+    }
+    if(s.tab===1||s.tab===2||s.tab===3) state.tab=s.tab;
   }
 
   function updateList(){
@@ -1039,52 +992,57 @@
       state.tab=n; render();
       document.getElementById("scroll").scrollTop = scrollMem[n] || 0;
     }
-    else if(act==="filter"){ state.filter=el.getAttribute("data-filter"); updateList(); }
+    else if(act==="filter"){ state.filter=el.getAttribute("data-filter"); updateList(); save(); }
     else if(act==="school"){
       state.school=el.getAttribute("data-id");
       scrollMem[state.tab]=0; state.tab=2; render();
       document.getElementById("scroll").scrollTop=0;
     }
+    else if(act==="reset"){
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(err){}
+      var d = JSON.parse(JSON.stringify(DEFAULTS));
+      Object.keys(state).forEach(function(k){ delete state[k]; });
+      Object.keys(d).forEach(function(k){ state[k]=d[k]; });
+      flash = t("resetDone");
+      render();
+    }
   });
 
   document.addEventListener("input", function(e){
     var el=e.target;
-    if(el.getAttribute && el.getAttribute("data-range")==="sat"){
+    var kind = el.getAttribute && el.getAttribute("data-range");
+    if(kind==="sat"){
       state.sat=Number(el.value);
       var v=document.getElementById("satVal");
       if(v) v.innerHTML=state.sat+'<small>/ 1600</small>';
-      updateList();
-      var g=document.getElementById("gaugeCard");
-      if(g) g.innerHTML=gaugeBlockHtml();
+      updateList(); save();
     }
-    else if(el.getAttribute && el.getAttribute("data-range")==="gpa"){
+    else if(kind==="gpa"){
       state.gpa=Number(el.value);
       var v2=document.getElementById("gpaVal");
       if(v2) v2.innerHTML=state.gpa.toFixed(2)+'<small>'+esc(t("gpaUnit"))+'</small>';
-      updateList();
+      updateList(); save();
     }
-    else if(el.getAttribute && el.getAttribute("data-range")==="pillar"){
+    else if(kind==="pillar"){
       state.pillars[el.getAttribute("data-id")]=Number(el.value);
-      updateGauge();
+      updateGauge(); save();
     }
   });
 
   document.addEventListener("change", function(e){
     var el=e.target;
-    if(el.getAttribute && el.getAttribute("data-select")==="major"){ state.major=el.value; updateList(); }
-    if(el.getAttribute && el.getAttribute("data-select")==="school"){ state.school=el.value; render(); }
+    var sel = el.getAttribute && el.getAttribute("data-select");
+    if(sel==="major"){ state.major=el.value; updateList(); save(); }
+    if(sel==="school"){ state.school=el.value; render(); }
   });
 
   /* ---------- boot ---------- */
-  try{
-    var saved=JSON.parse(localStorage.getItem("vc_mvp_v01")||"null");
-    if(saved && saved.pillars && ["ko","en","vi"].indexOf(saved.lang)>-1){
-      state = Object.assign(state, saved);
-      state.tab = 1;
-    }
-  }catch(e){}
+  restore();
   render();
-  window.__VC = { state:state, SCHOOLS:SCHOOLS, fitPct:fitPct, vci:vci, render:render };
+  window.__VC = {
+    version:"0.1.1", state:state, SCHOOLS:SCHOOLS, MAJORS:MAJORS, CAREERS:CAREERS,
+    bandKey:bandKey, vci:vci, render:render, storageKey:STORAGE_KEY, save:save, restore:restore
+  };
 })();
 </script>
 </body>
